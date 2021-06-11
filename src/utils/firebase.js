@@ -9,4 +9,3 @@ export  const auth = firebase.initializeApp ( {
     messagingSenderId: "921400033865",
     appId: "1:921400033865:web:d2dd23784c01c19c997598"
   }).auth();
-

@@ -1,11 +1,9 @@
-import React,{useEffect} from 'react'
-import {useAuth} from '../context/AuthContext'
-import {useHistory} from 'react-router-dom'
-import {auth} from '../utils/Firebase'
-
+import React, {useContext} from 'react'
+import {UserContext} from '../App'
+import {auth} from  '../utils/firebase'
 function Home() {
 
-  const {user} = useAuth();
+  let {user} = useContext(UserContext)
   
  
 
@@ -15,8 +13,8 @@ function Home() {
       <div>
           
             
-            if(user)
-            <h1>This is a home page for {user.displayName }</h1>
+           <h1>This is a home Page for {user.displayName}</h1>
+            
             
           
       </div>
