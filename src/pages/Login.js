@@ -1,41 +1,16 @@
-import React  ,{useEffect ,useContext ,useState} from "react";
-import { GoogleOutlined } from "@ant-design/icons";
+import { StyledFirebaseAuth } from "react-firebaseui";
+import firebase from "../utils/firebase";
 
-import { auth } from "../utils/firebase";
-
-import firebase from "firebase/app";
-import {UserContext} from '../App'
-import {useHistory} from 'react-router-dom'
-const Login = () => {
-  let {user} = useContext(UserContext)
-  let history = useHistory();
-  
-  useEffect(function () {
-    
-    
-    console.log(user)
-    
-    if (user){
-      history.push('/home')
-    }
-      
-      
-    
-    },[user ,history]);
+export default function Login() {
+  const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: "popup",
+    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    signInSuccessUrl: "/",
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+  };
   return (
-    <div id="login-page">
-      <div id="login-card">
-        <h2>Welcome To Student Analysis!</h2>
-        <div
-          className="login-button google"
-          onClick={() =>
-            auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())
-          }
-        >
-          <GoogleOutlined /> Sign In with Google
-        </div>
-      </div>
-    </div>
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
   );
-};
-export default Login;
+}

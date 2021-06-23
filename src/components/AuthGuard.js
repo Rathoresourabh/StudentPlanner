@@ -12,7 +12,7 @@ export default function AuthGuard ({ children }) {
       </div>
     );
   } else if (user === null) {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   } else {
     return children;
   }

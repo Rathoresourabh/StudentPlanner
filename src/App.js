@@ -1,38 +1,32 @@
-import React,{useState ,useEffect} from "react"
-import Routes  from './Routes'
-import {auth} from './utils/firebase'
+import React, { useState, useEffect } from "react";
+import Routes from "./Routes";
+import firebase from "./utils/firebase";
 
-import {BrowserRouter } from 'react-router-dom'
-// import {useHistory} from 'react-router-dom'
-
-
-
+import { BrowserRouter } from "react-router-dom";
 
 let UserContext = React.createContext();
 function App() {
-  let [user,setUser] =  useState();
-  
-  
-  useEffect(function () {
+  let [user, setUser] = useState();
 
-    auth.onAuthStateChanged(function (user) {
-    setUser(user);
-    console.log(user);
-      
+  useEffect(
+    function () {
+      firebase.auth().onAuthStateChanged(function (user) {
+        setUser(user);
+        
+      });
+    },
+    []
+  );
 
-    });
-    },[user]);
-  
-    return (
+  return (
     <div className="App">
-    <UserContext.Provider value={{ user, setUser }}>
-          <BrowserRouter>
-          
-            <Routes />
-          </BrowserRouter>
-    </UserContext.Provider>
+      <UserContext.Provider value={{ user, setUser }}>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </UserContext.Provider>
     </div>
-  )
+  );
 }
 
-export  {App , UserContext} ;
+export { App, UserContext };

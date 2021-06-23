@@ -1,9 +1,11 @@
 import React, {useContext} from 'react'
 import {UserContext} from '../App'
-import {auth} from  '../utils/firebase'
+import firebase from  '../utils/firebase'
+import {Typography} from '@material-ui/core'
+import AddProfileDetail from '../components/AddProfileDetails'
 function Home() {
 
-  let {user} = useContext(UserContext)
+  let {user} = useContext(UserContext);
   
  
 
@@ -13,9 +15,10 @@ function Home() {
       <div>
           
             
-           <h1>This is a home Page for {user.displayName}</h1>
+           <Typography variant="h4" color="primary" align="center">Welcome to student performance analyzer {user.displayName}</Typography>
+           <Typography variant="h6" align="center"> Kindly fill your details below</Typography>
             
-            
+            <AddProfileDetail/>
           
       </div>
       

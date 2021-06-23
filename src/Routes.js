@@ -9,10 +9,10 @@ import Profile from './pages/Profile'
 function Routes() {
     return (
         <Switch>
-            <Route path ='/' exact>
+            <Route path ='/login' exact>
               <Login/>  
             </Route>
-            <Route path ='/home' exact>
+            <Route path ='/' exact>
                 <AuthGuard>
                     <MainLayout>
                         <Home/>

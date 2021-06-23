@@ -8,8 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {useContext} from 'react'
 import {UserContext} from '../App'
-import {auth} from '../utils/firebase'
-import { useHistory } from 'react-router-dom';
+import firebase from '../utils/firebase'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -25,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar({setOpenD}) {
   const classes = useStyles();
   let { user } =  useContext(UserContext);
-  let history = useHistory();
+ 
   const handleLogout = () =>{
-      auth.signOut();
-      history.push('/')
+      firebase.auth().signOut();
+      
   }
   return (
     <div className={classes.root}>
