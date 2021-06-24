@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import {Typography ,Button} from "@material-ui/core"
 import {UserContext} from '../App'
 import {useHistory} from 'react-router-dom'
+import ShowProfile from "../components/ShowProfile"
 function Profile() {
     let {user} = useContext(UserContext);
     let history = useHistory();
@@ -17,9 +18,9 @@ function Profile() {
             Go Back To Home Page
             </Button>
         </div>
-        
+        <ShowProfile/>
         </Typography>
-
+       
         
     )
 }
