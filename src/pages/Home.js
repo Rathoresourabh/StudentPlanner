@@ -15,8 +15,10 @@ function Home() {
       <div>
           
             
-           <Typography variant="h4" color="primary" align="center">Welcome to student performance analyzer {user.displayName}</Typography>
-           <Typography variant="h6" align="center"> Kindly fill your details below</Typography>
+           <Typography variant="h4" color="primary" align="center">
+           Welcome to student performance analyzer {user.displayName}</Typography>
+           <Typography variant="h6" align="center"> 
+           Kindly fill your details below</Typography>
             
             <AddProfileDetail/>
           
