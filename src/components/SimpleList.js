@@ -34,17 +34,17 @@ export default function SimpleList({ setOpenD }) {
   let items = [
     {
       title: "Home",
-      path: "/Home",
+      path: "/",
       icon: <HomeIcon/>,
     },
     {
       title: "Profile",
-      path: "/myProfile",
+      path: "/profile",
       icon: <AccountCircleIcon />,
     },
     {
       title: "Chart",
-      path: "/chart",
+      path: "/charts",
       icon: <AssessmentIcon />,
     },
   ];

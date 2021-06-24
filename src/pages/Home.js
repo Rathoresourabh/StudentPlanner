@@ -1,15 +1,23 @@
-import React, { useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
-import { useHistory } from "react-router-dom";
-import { auth } from "../utils/Firebase";
-
+import React, { useContext } from "react";
+import { UserContext } from "../App";
+import firebase from "../utils/firebase";
+import { Typography } from "@material-ui/core";
+import AddProfileDetail from "../components/AddProfileDetails";
 function Home() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
+
+  let { user } = useContext(UserContext);
 
   return (
     <div>
-      <h1>This is a home page for {user ? user.displayName : ""}</h1>
-      <p>{user ? user.email : ""}</p>
+      <Typography variant="h4" color="primary" align="center">
+        Welcome to student performance analyzer {user.displayName}
+      </Typography>
+      <Typography variant="h6" align="center">
+        Kindly fill your details below
+      </Typography>
+
+      <AddProfileDetail />
     </div>
   );
 }

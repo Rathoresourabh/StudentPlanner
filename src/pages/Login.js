@@ -1,23 +1,16 @@
-import React from 'react';
-import {GoogleOutlined} from '@ant-design/icons';
-import 'firebase/app'
-import {auth} from '../utils/Firebase'
-import firebase from 'firebase/app';
+import { StyledFirebaseAuth } from "react-firebaseui";
+import firebase from "../utils/firebase";
 
-const Login = () => {
-    return (
-        <div id ="login-page">
-            <div id ="login-card">
-                <h2>Welcome To Student Analysis!</h2>
-                <div
-                className='login-button google'
-                onClick={()=>
-                auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}>
-                <GoogleOutlined/> Sign In with Google
-
-                </div>
-            </div>
-        </div>
-    )
+export default function Login() {
+  const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: "popup",
+    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    signInSuccessUrl: "/",
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+  };
+  return (
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+  );
 }
-export default Login;
