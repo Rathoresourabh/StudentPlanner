@@ -161,15 +161,69 @@ const states = [
   },
 ];
 
+
+
 const AddProfileDetails = (props) => {
-  const [values, setValues] = useState({
+  let empty = {
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
     state: "",
     country: "INDIA",
-  });
+    Sem1Marks : "",
+    Sem2Marks : "",
+    Sem3Marks : "",
+    Sem4Marks : "",
+    Sem5Marks : "",
+    Sem6Marks : "",
+    Sem7Marks : "",
+    Sem8Marks : "",
+    Sem9Marks : "",
+    Sem10Marks : "",
+  }
+  
+  let semMarks = [
+    {
+      name: "Sem1Marks",
+      title : "Sem-1 Marks",
+  
+    },
+    
+    {
+      name : "Sem2Marks",
+      title: "Sem-2 Marks",
+  
+    } ,
+    {
+      name : "Sem3Marks",
+      title: "Sem-3 Marks",
+  
+    } ,{
+      name : "Sem4Marks",
+      title: "Sem-4 Marks",
+  
+    } ,{
+      name : "Sem5Marks",
+      title: "Sem-5 Marks",
+  
+    } ,{
+      name : "Sem6Marks",
+      title: "Sem-6 Marks",
+  
+    } ,{
+      name : "Sem7Marks",
+      title: "Sem-7 Marks",
+  
+    } ,{
+      name : "Sem8Marks",
+      title: "Sem-8 Marks",
+  
+    } ,
+    
+  
+  ]
+  const [values, setValues] = useState(empty);
 
   const handleChange = (event) => {
     setValues({
@@ -260,6 +314,22 @@ const AddProfileDetails = (props) => {
                 ))}
               </TextField>
             </Grid>
+            {semMarks.map(function(item,idx){
+              return(
+                <Grid  key = {idx} item md={6} xs={12}>
+              <TextField
+                fullWidth
+                label={item.title}
+                name={item.name}
+                onChange={handleChange}
+                required
+                value={values[item.name]}
+                variant="outlined"
+              />
+            </Grid>
+              )
+            })}
+            
           </Grid>
         </CardContent>
         <Divider />
@@ -272,6 +342,22 @@ const AddProfileDetails = (props) => {
         >
           <Button color="primary" variant="contained">
             Save details
+          </Button>
+        </Box>
+
+        <br></br>
+        <Box
+          sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          allignContent: "right",
+          p: 4,
+          }}
+        >
+          <Button color="primary" variant="contained" onClick ={function(){
+            setValues(empty);
+          }}>
+            Reset
           </Button>
         </Box>
       </Card>
