@@ -34,8 +34,7 @@ function AddProfileDetails() {
     Sem6Marks: "",
     Sem7Marks: "",
     Sem8Marks: "",
-    Sem9Marks: "",
-    Sem10Marks: "",
+    
   };
   let { user } = useContext(UserContext);
   const [values, setValues] = useState(empty);
@@ -68,7 +67,7 @@ function AddProfileDetails() {
       {dataIsFilled ? (
         <ShowProfile formData={values} />
       ) : (
-        <form autoComplete="on" required validate>
+        <form autoComplete="on" required validate >
           <Card>
             <CardHeader
               subheader="The information can be edited"

@@ -51,7 +51,7 @@ function ShowProfile({}) {
             flexDirection: "column",
           }}
         >
-          <Avatar alt={displayName} src={photoURL} align="center" />
+          <Avatar alt={displayName}   src={photoURL} align="center" />
           <Typography color="textPrimary" gutterBottom variant="h3">
             {displayName}
           </Typography>
@@ -109,16 +109,12 @@ function ShowProfile({}) {
             </ul>
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            {`${moment().format("hh:mm A")} ${user.timezone}`}
+            {`${moment().format("hh:mm A")}`}
           </Typography>
         </Box>
       </CardContent>
       <Divider />
-      <CardActions>
-        <Button color="primary" fullWidth variant="text">
-          Upload picture
-        </Button>
-      </CardActions>
+      
     </Card>
   );
 }

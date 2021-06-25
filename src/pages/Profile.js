@@ -1,9 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext , useState} from "react";
 import { Typography, Button } from "@material-ui/core";
 import { UserContext } from "../App";
 import { useHistory } from "react-router-dom";
 import ShowProfile from "../components/ShowProfile";
 function Profile() {
+
+  
+    
+  let emptyData = {
+    firstName: undefined,
+    lastName: undefined,
+    email: undefined,
+    phone: undefined,
+    state: undefined,
+    country: undefined,
+    Sem1Marks: undefined,
+    Sem2Marks: undefined,
+    Sem3Marks: undefined,
+    Sem4Marks: undefined,
+    Sem5Marks: undefined,
+    Sem6Marks: undefined,
+    Sem7Marks: undefined,
+    Sem8Marks: undefined,
+  }
+  let [userData , setUserData] = useState (emptyData);
   let { user } = useContext(UserContext);
   let history = useHistory();
   return (

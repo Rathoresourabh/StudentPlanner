@@ -46,9 +46,9 @@ app.get("/", function (req, res) {
   res.send("Working");
 });
 
-app.post("/getUserData", async function (req, res) {
-  const user = await Application.find({ email: req.body.email });
-  res.status(200).json({ data: user });
+app.get("/getUserData", async function (req, res) {
+  const user = await Application.find({ email: req.param.email });
+  res.status(200).json(user);
 });
 
 app.get("/applications", function (req, res) {
