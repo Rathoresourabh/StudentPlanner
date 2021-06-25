@@ -8,15 +8,11 @@ let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
 
-  useEffect(
-    function () {
-      firebase.auth().onAuthStateChanged(function (user) {
-        setUser(user);
-        
-      });
-    },
-    []
-  );
+  useEffect(function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+      setUser(user);
+    });
+  }, []);
 
   return (
     <div className="App">

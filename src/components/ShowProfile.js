@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
+import axios from "axios";
 import {
   Avatar,
   Box,
@@ -21,10 +22,25 @@ import { UserContext } from "../App";
 //   name: '',
 //   timezo
 
-function ShowProfile({ formData }) {
+function ShowProfile({}) {
   let { user } = useContext(UserContext);
+  const [formData, setFormData] = useState({});
   const displayName = user.displayName;
   const photoURL = user.photoURL;
+  const email = user.email;
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:5000/getUserData/", { email: email })
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          setFormData(response.data.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  }, []);
   return (
     <Card>
       <CardContent>
@@ -39,6 +55,7 @@ function ShowProfile({ formData }) {
           <Typography color="textPrimary" gutterBottom variant="h3">
             {displayName}
           </Typography>
+
           <Typography color="textSecondary" variant="body1">
             <ul>
               <li>

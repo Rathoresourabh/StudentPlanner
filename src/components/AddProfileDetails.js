@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,7 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import ShowProfile from "./ShowProfile";
 import { useSnackbar } from "notistack";
+import { UserContext } from "../App";
 
 function AddProfileDetails() {
   let { enqueueSnackbar } = useSnackbar();
@@ -36,10 +37,24 @@ function AddProfileDetails() {
     Sem9Marks: "",
     Sem10Marks: "",
   };
-
+  let { user } = useContext(UserContext);
   const [values, setValues] = useState(empty);
   const [dataIsFilled, setDataIsFilled] = useState(false);
+  const email = user.email;
   // const history = useHistory();
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:5000/getUserData/", { email: email })
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          setValues(response.data.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  }, []);
 
   const handleChange = (event) => {
     setValues({
@@ -53,7 +68,7 @@ function AddProfileDetails() {
       {dataIsFilled ? (
         <ShowProfile formData={values} />
       ) : (
-        <form autoComplete="off" noValidate>
+        <form autoComplete="on" required validate>
           <Card>
             <CardHeader
               subheader="The information can be edited"
