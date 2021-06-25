@@ -22,8 +22,6 @@ const Application = mongoose.model("Application", {
   Sem6Marks: String,
   Sem7Marks: String,
   Sem8Marks: String,
-  Sem9Marks: String,
-  Sem10Marks: String,
 });
 
 let app = express();
@@ -48,8 +46,9 @@ app.get("/", function (req, res) {
   res.send("Working");
 });
 
-app.get("/getUserData", function (req, res) {
-  res.status(200).send("sucess");
+app.post("/getUserData", async function (req, res) {
+  const user = await Application.find({ email: req.body.email });
+  res.status(200).json({ data: user });
 });
 
 app.get("/applications", function (req, res) {
