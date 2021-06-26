@@ -1,34 +1,47 @@
-import React, { useContext , useState} from "react";
+import React, { useState , useEffect } from "react";
 import { Typography, Button } from "@material-ui/core";
-import { UserContext } from "../App";
-import { useHistory } from "react-router-dom";
+// import { UserContext } from "../App";
 import ShowProfile from "../components/ShowProfile";
-function Profile() {
+import {useHistory} from "react-router";
+import axios from "axios";
+// let userDataContext = React.createContext();
 
+function Profile() {
+  // let emptyData = {
+  //   firstName: undefined,
+  //   lastName: undefined,
+  //   email: undefined,
+  //   phone: undefined,
+  //   state: undefined,
+  //   country: undefined,
+  //   Sem1Marks: undefined,
+  //   Sem2Marks: undefined,
+  //   Sem3Marks: undefined,
+  //   Sem4Marks: undefined,
+  //   Sem5Marks: undefined,
+  //   Sem6Marks: undefined,
+  //   Sem7Marks: undefined,
+  //   Sem8Marks: undefined,
+  // };
+  // let [userData, setUserData] = useState([]);
   
-    
-  let emptyData = {
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    phone: undefined,
-    state: undefined,
-    country: undefined,
-    Sem1Marks: undefined,
-    Sem2Marks: undefined,
-    Sem3Marks: undefined,
-    Sem4Marks: undefined,
-    Sem5Marks: undefined,
-    Sem6Marks: undefined,
-    Sem7Marks: undefined,
-    Sem8Marks: undefined,
-  }
-  let [userData , setUserData] = useState (emptyData);
-  let { user } = useContext(UserContext);
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:5000/getUserData/",)
+  //     .then((response) => {
+         
+  //         setUserData(response.data);
+      
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error", error);
+  //     });
+  // }, []);
+
   let history = useHistory();
   return (
     <Typography variant="h4" color="primary" align="center">
-      Please go back to Home Page and fill in your details {user.displayName}
+      Please go back to Home Page and fill in your details 
       <div>
         <Button
           variant="outlined"
@@ -40,10 +53,16 @@ function Profile() {
         >
           Go Back To Home Page
         </Button>
+        
       </div>
-      <ShowProfile />
-    </Typography>
+      
+      <div><ShowProfile /></div>
+      </Typography>
+
+
+      
+   
   );
 }
 
-export default Profile;
+export default Profile

@@ -14,28 +14,19 @@ import {
 
 import { UserContext } from "../App";
 
-// const  = {
-//   avatar: '',
-//   city: '',
-//   country: '',
-//   jobTitle: '',
-//   name: '',
-//   timezo
-
-function ShowProfile({}) {
+function ShowProfile() {
+  const [showData, setShowData] = useState({})
   let { user } = useContext(UserContext);
-  const [formData, setFormData] = useState({});
+  let { userData } = useContext(UserContext);
   const displayName = user.displayName;
   const photoURL = user.photoURL;
-  const email = user.email;
-
+ 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/getUserData/", { email: email })
+      .get(`http://localhost:5000/getUserData/?email=${userData}`, )
       .then((response) => {
-        if (response.status === 200 || response.status === 201) {
-          setFormData(response.data.data[0]);
-        }
+        
+        setShowData(response.data[0])
       })
       .catch((error) => {
         console.log("Error", error);
@@ -59,9 +50,9 @@ function ShowProfile({}) {
           <Typography color="textSecondary" variant="body1">
             <ul>
               <li>
-                <b>firstName</b> -{formData.firstName}
+                <b>firstName</b> - {showData.email}
               </li>
-              <li>
+              {/* <li>
                 <b>lastName</b> -{formData.lastName}
               </li>
               <li>
@@ -105,7 +96,7 @@ function ShowProfile({}) {
               </li>
               <li>
                 <b>Sem10Marks</b> -{formData.Sem10Marks}
-              </li>
+              </li> */}
             </ul>
           </Typography>
           <Typography color="textSecondary" variant="body1">
