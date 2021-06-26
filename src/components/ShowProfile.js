@@ -14,24 +14,11 @@ import {
 
 import { UserContext } from "../App";
 
-function ShowProfile() {
-  const [showData, setShowData] = useState({})
+function ShowProfile({ items }) {
   let { user } = useContext(UserContext);
-  let { userData } = useContext(UserContext);
   const displayName = user.displayName;
   const photoURL = user.photoURL;
- 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/getUserData/?email=${userData}`, )
-      .then((response) => {
-        
-        setShowData(response.data[0])
-      })
-      .catch((error) => {
-        console.log("Error", error);
-      });
-  }, []);
+
   return (
     <Card>
       <CardContent>
@@ -42,62 +29,62 @@ function ShowProfile() {
             flexDirection: "column",
           }}
         >
-          <Avatar alt={displayName}   src={photoURL} align="center" />
+          <Avatar alt={displayName} src={photoURL} align="center" />
           <Typography color="textPrimary" gutterBottom variant="h3">
             {displayName}
           </Typography>
 
           <Typography color="textSecondary" variant="body1">
-            <ul>
-              <li>
-                <b>firstName</b> - {showData.email}
-              </li>
-              {/* <li>
-                <b>lastName</b> -{formData.lastName}
-              </li>
-              <li>
-                <b>email</b> -{formData.email}
-              </li>
-              <li>
-                <b>phone</b> -{formData.phone}
-              </li>
-              <li>
-                <b>state</b> -{formData.state}
-              </li>
-              <li>
-                <b>country</b> -{formData.country}
-              </li>
-              <li>
-                <b>Sem1Marks</b> -{formData.Sem1Marks}
-              </li>
-              <li>
-                <b>Sem2Marks</b> -{formData.Sem2Marks}
-              </li>
-              <li>
-                <b>Sem3Marks</b> -{formData.Sem3Marks}
-              </li>
-              <li>
-                <b>Sem4Marks</b> -{formData.Sem4Marks}
-              </li>
-              <li>
-                <b>Sem5Marks</b> -{formData.Sem5Marks}
-              </li>
-              <li>
-                <b>Sem6Marks</b> -{formData.Sem6Marks}
-              </li>
-              <li>
-                <b>Sem7Marks</b> -{formData.Sem7Marks}
-              </li>
-              <li>
-                <b>Sem8Marks</b> -{formData.Sem8Marks}
-              </li>
-              <li>
-                <b>Sem9Marks</b> -{formData.Sem9Marks}
-              </li>
-              <li>
-                <b>Sem10Marks</b> -{formData.Sem10Marks}
-              </li> */}
-            </ul>
+            {items.firstName}
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            {items.lastName}
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            {items.email}
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            
+            {items.phone}
+            
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            
+            {items.state}
+            
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            
+            {items.country}
+            
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+           
+            {items.Sem1Marks}
+            
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            
+            
+            {items.Sem2Marks}
+            
+          </Typography>
+          <Typography color="textSecondary" variant="body1">
+            {items.firstName}
+            {items.lastName}
+            {items.email}
+            {items.phone}
+            {items.state}
+            {items.country}
+            {items.Sem1Marks}
+            {items.Sem1Marks}
+            {items.Sem2Marks}
+            {items.Sem3Marks}
+            {items.Sem4Marks}
+            {items.Sem5Marks}
+            {items.Sem6Marks}
+            {items.Sem7Marks}
+            {items.Sem8Marks}
           </Typography>
           <Typography color="textSecondary" variant="body1">
             {`${moment().format("hh:mm A")}`}
@@ -105,7 +92,6 @@ function ShowProfile() {
         </Box>
       </CardContent>
       <Divider />
-      
     </Card>
   );
 }

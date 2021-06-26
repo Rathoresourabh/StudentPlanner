@@ -167,7 +167,12 @@ function AddProfileDetails() {
               axios
                 .post("http://localhost:5000/submit", values)
                 .then((response) => {
-                  setUserData(values.email)
+                  let copy = {...userData}
+                  copy.userByEmail = response.data.email
+                  setUserData(copy)
+
+
+                  
                   console.log("Success", response);
                   enqueueSnackbar("Success");
                   setValues(empty);

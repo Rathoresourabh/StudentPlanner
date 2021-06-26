@@ -11,7 +11,7 @@ admin.initializeApp({
 
 
 mongoose.connect(
-  "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance?retryWrites=true&w=majority",
+  "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance3?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
@@ -43,22 +43,20 @@ app.use(expressbearertoken());
 
 
 
-app.get("/getUserData", async function (req, res) {
-  const userEmail = await Application.find({ email: req.query.email });
-  res.send(userEmail);
-});
+
 app.get("/", function (req, res) {
   // console.log(req.user)
   res.send("Working");
 });
-
-app.get("/applications", function (req, res) {
-  Application.find()
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => res.sendStatus(501));
+app.get("/getUserData", async function (req, res) {
+  const usersData = await Application.find();
+  res.send(usersData);
 });
+app.get("/getUserData/email", async function (req, res) {
+  const usersDataByEmail = await Application.find(req.params.email);
+  res.send(usersDataByEmail);
+});
+
 app.use(function (req, res, next) {
   if (req.token) {
     admin
@@ -89,6 +87,13 @@ app.post("/submit", function (req, res) {
 });
 
 
+app.get("/applications", function (req, res) {
+  Application.find()
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => res.sendStatus(501));
+});
 
 
 

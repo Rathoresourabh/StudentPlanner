@@ -8,7 +8,14 @@ import axios from "axios";
 let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState({
+  
+  
+  email: undefined
+  
+  
+  
+  });
 
   useEffect(function () {
     firebase.auth().onAuthStateChanged(function (user) {
