@@ -1,4 +1,4 @@
-import {  useState , useContext  } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Button,
   Card,
@@ -13,14 +13,15 @@ import { SemMarks } from "./Data/SemMarks";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import {UserContext} from "../App"
+import { UserContext } from "../App";
 
 function AddProfileDetails() {
   let { enqueueSnackbar } = useSnackbar();
+  let { user } = useContext(UserContext);
   let empty = {
     firstName: "",
     lastName: "",
-    email: "",
+    email: user.email,
     phone: "",
     state: "",
     country: "INDIA",
@@ -35,8 +36,21 @@ function AddProfileDetails() {
   };
   const [values, setValues] = useState(empty);
   const history = useHistory();
-  let { userData ,setUserData } = useContext(UserContext);
-  
+  let { userData, setUserData } = useContext(UserContext);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/getUserData/email/${user.email}`)
+      .then((response) => {
+        console.log(response);
+        if (response.data.length > 0) {
+          setValues(response.data[0]);
+        }
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  }, []);
 
   const handleChange = (event) => {
     setValues({
@@ -89,7 +103,7 @@ function AddProfileDetails() {
                 name="email"
                 onChange={handleChange}
                 required
-                value={values.email}
+                value={user.email}
                 variant="outlined"
               />
             </Grid>
@@ -167,12 +181,9 @@ function AddProfileDetails() {
               axios
                 .post("http://localhost:5000/submit", values)
                 .then((response) => {
-                  let copy = {...userData}
-                  copy.userByEmail = response.data.email
-                  setUserData(copy)
-
-
-                  
+                  let copy = { ...userData };
+                  copy.userByEmail = response.data.email;
+                  setUserData(copy);
                   console.log("Success", response);
                   enqueueSnackbar("Success");
                   setValues(empty);
@@ -181,7 +192,6 @@ function AddProfileDetails() {
                 .catch((error) => {
                   console.log("Error", error);
                 });
-                
             }}
           >
             Submit

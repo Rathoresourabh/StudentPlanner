@@ -6,14 +6,14 @@ import { useHistory } from "react-router";
 import axios from "axios";
 
 function Profile() {
-  let { userData  } = useContext(UserContext);
+  let { user } = useContext(UserContext);
 
   const [showData, setShowData] = useState([]);
+
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/getUserData/email?email=${userData}`)
+      .get(`http://localhost:5000/getUserData/email/${user.email}`)
       .then((response) => {
-  
         console.log(response);
         setShowData(response.data);
       })
@@ -27,7 +27,7 @@ function Profile() {
       <Typography variant="h4" color="primary" align="center">
         Please go back to Home Page and fill in your details
         <div>
-        <Button
+          <Button
             variant="outlined"
             color="primary"
             align="center"
@@ -38,14 +38,13 @@ function Profile() {
             Go Back To Home Page
           </Button>
         </div>
-        
       </Typography>
-     
-          <div>
-            {showData.map(function(items ,idx){
-              return <ShowProfile items ={items}/>
-            })}
-          </div>
+
+      <div>
+        {showData.map(function (items, idx) {
+          return <ShowProfile items={items} />;
+        })}
+      </div>
     </div>
   );
 }

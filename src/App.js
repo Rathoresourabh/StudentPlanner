@@ -9,37 +9,30 @@ let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
   const [userData, setUserData] = useState({
-  
-  
-  email: undefined
-  
-  
-  
+    email: undefined,
   });
 
   useEffect(function () {
     firebase.auth().onAuthStateChanged(function (user) {
       setUser(user);
-      console.log(user);
-      if(user){
-        user
-        .getIdToken(true)
-        .then(function(idToken){
-          axios.defaults.headers["Authorization"] = `Bearer ${idToken}`;
+      // if(user){
+      //   user
+      //   .getIdToken(true)
+      //   .then(function(idToken){
+      //     axios.defaults.headers["Authorization"] = `Bearer ${idToken}`;
 
+      //   })
+      // .catch(function(error){
+      //   // handle error
 
-        })
-        .catch(function(error){
-          // handle error 
-
-        });
-      }
+      // });
+      // }
     });
   }, []);
 
   return (
     <div className="App">
-      <UserContext.Provider value={{  user, setUser ,  userData , setUserData}}>
+      <UserContext.Provider value={{ user, setUser, userData, setUserData }}>
         <BrowserRouter>
           <Routes />
         </BrowserRouter>
