@@ -44,30 +44,19 @@ function ShowProfile({ items }) {
             {items.email}
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            
             {items.phone}
-            
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            
             {items.state}
-            
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            
             {items.country}
-            
           </Typography>
           <Typography color="textSecondary" variant="body1">
-           
             {items.Sem1Marks}
-            
           </Typography>
           <Typography color="textSecondary" variant="body1">
-            
-            
             {items.Sem2Marks}
-            
           </Typography>
           <Typography color="textSecondary" variant="body1">
             {items.firstName}

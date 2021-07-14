@@ -1,15 +1,24 @@
-import {useContext} from 'react'
+/* eslint-disable jsx-a11y/alt-text */
+import { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { UserContext } from "../App";
-
-export default function AuthGuard ({ children }) {
+import "./AuthGuard.css";
+export default function AuthGuard({ children }) {
   let { user } = useContext(UserContext);
 
   if (user === undefined) {
     return (
-      <div>
-        <h1>Loading ... </h1>
-      </div>
+      <div
+        className="lds-spinner"
+        style={{
+          // width: "100vw",
+          // height: "100vh",
+          
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      ></div>
     );
   } else if (user === null) {
     return <Redirect to="/login" />;

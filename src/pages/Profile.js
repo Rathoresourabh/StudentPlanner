@@ -20,7 +20,7 @@ function Profile() {
       .catch((error) => {
         console.log("Error", error);
       });
-  }, []);
+  }, );
   let history = useHistory();
   return (
     <div>
