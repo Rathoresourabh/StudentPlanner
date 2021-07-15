@@ -1,38 +1,38 @@
 export const SemMarks = [
     {
-      name: "Sem1Marks",
-      title : "Sem-1 Marks",
+      name: "FatherName",
+      title : "Father's Name",
   
     },
     
     {
-      name : "Sem2Marks",
-      title: "Sem-2 Marks",
+      name : "MotherName",
+      title: "Mother's Name",
   
     } ,
     {
-      name : "Sem3Marks",
-      title: "Sem-3 Marks",
+      name : "Address",
+      title: "Address",
   
     } ,{
-      name : "Sem4Marks",
-      title: "Sem-4 Marks",
+      name : "PermanentAddress",
+      title: "Permanent Address",
+  
+    },{
+      name : "FathersOccupation",
+      title: "Father's Occupation",
   
     } ,{
-      name : "Sem5Marks",
-      title: "Sem-5 Marks",
+      name : "MothersOccupation",
+      title: "Mother's Occupation",
   
     } ,{
-      name : "Sem6Marks",
-      title: "Sem-6 Marks",
+      name : "FatherPhone",
+      title: "Father's Mobile Number",
   
     } ,{
-      name : "Sem7Marks",
-      title: "Sem-7 Marks",
-  
-    } ,{
-      name : "Sem8Marks",
-      title: "Sem-8 Marks",
+      name : "MotherPhone",
+      title: "Mother's Mobile Number",
   
     } ,
     

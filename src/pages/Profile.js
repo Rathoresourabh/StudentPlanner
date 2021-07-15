@@ -14,7 +14,6 @@ function Profile() {
     axios
       .get(`http://localhost:5000/getUserData/email/${user.email}`)
       .then((response) => {
-        console.log(response);
         setShowData(response.data);
       })
       .catch((error) => {
@@ -24,8 +23,15 @@ function Profile() {
   let history = useHistory();
   return (
     <div>
+      
+
+      <div>
+        {showData.map(function (items, idx) {
+          return <ShowProfile items={items} />;
+        })}
+      </div>
       <Typography variant="h4" color="primary" align="center">
-        Please go back to Home Page and fill in your details
+        Go back to Home Page 
         <div>
           <Button
             variant="outlined"
@@ -39,12 +45,6 @@ function Profile() {
           </Button>
         </div>
       </Typography>
-
-      <div>
-        {showData.map(function (items, idx) {
-          return <ShowProfile items={items} />;
-        })}
-      </div>
     </div>
   );
 }

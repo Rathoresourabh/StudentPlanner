@@ -11,74 +11,154 @@ import {
   Divider,
   Typography,
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { UserContext } from "../App";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: "20px",
+
+    maxWidth: "800px",
+    margin: "0 auto",
+  },
+
+}));
 
 function ShowProfile({ items }) {
   let { user } = useContext(UserContext);
   const displayName = user.displayName;
   const photoURL = user.photoURL;
+  const classes = useStyles();
 
   return (
-    <Card>
+    <Card
+      className={classes.root}
+    >
       <CardContent>
-        <Box
-          sx={{
-            alignItems: "center",
+        {/* <Box
+          style={{
             display: "flex",
-            flexDirection: "column",
+            justifyContent: "center"
           }}
         >
           <Avatar alt={displayName} src={photoURL} align="center" />
-          <Typography color="textPrimary" gutterBottom variant="h3">
-            {displayName}
-          </Typography>
-
-          <Typography color="textSecondary" variant="body1">
-            {items.firstName}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.lastName}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.email}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.phone}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.state}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.country}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.Sem1Marks}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.Sem2Marks}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {items.firstName}
-            {items.lastName}
-            {items.email}
-            {items.phone}
-            {items.state}
-            {items.country}
-            {items.Sem1Marks}
-            {items.Sem1Marks}
-            {items.Sem2Marks}
-            {items.Sem3Marks}
-            {items.Sem4Marks}
-            {items.Sem5Marks}
-            {items.Sem6Marks}
-            {items.Sem7Marks}
-            {items.Sem8Marks}
-          </Typography>
-          <Typography color="textSecondary" variant="body1">
-            {`${moment().format("hh:mm A")}`}
-          </Typography>
-        </Box>
+          
+        </Box> */}
+        <Typography color="textPrimary" gutterBottom variant="h3">
+          {displayName}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Email-{items.email}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Phone Number-{items.phone}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          State- {items.state}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Country- {items.country}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Father's Name- {items.FatherName}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Mother's Name-{items.MotherName}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+         Address- {items.Address}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Permanent Address- {items.PermanentAddress}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Father's Occupation- {items.FathersOccupation}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Mother's Occupation- {items.MothersOccupation}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Father's Contact Number- {items.FatherPhone}
+        </Typography>
+        <Typography
+          align="right"
+          variant="body2"
+          color="textSecondary"
+          component="p"
+          style={{ fontWeight: "bold" }}
+        >
+          Mother's Contact Number- {items.MotherPhone}
+        </Typography>
+        <Typography color="textSecondary" variant="body1">
+          {`${moment().format("hh:mm A")}`}
+        </Typography>
       </CardContent>
       <Divider />
     </Card>

@@ -28,6 +28,7 @@ function AddProfileDetails() {
     FatherName: "",
     MotherName: "",
     Address: "",
+    PermanentAddress: "",
     FathersOccupation: "",
     MothersOccupation: "",
     FatherPhone: "",
@@ -35,7 +36,7 @@ function AddProfileDetails() {
   };
   const [values, setValues] = useState(empty);
   const history = useHistory();
-  let { userData, setUserData } = useContext(UserContext);
+  // let { userData, setUserData } = useContext(UserContext);
 
   useEffect(() => {
     axios
@@ -180,12 +181,8 @@ function AddProfileDetails() {
               axios
                 .post("http://localhost:5000/submit", values)
                 .then((response) => {
-                  let copy = { ...userData };
-                  copy.userByEmail = response.data.email;
-                  setUserData(copy);
                   console.log("Success", response);
                   enqueueSnackbar("Success");
-                  setValues(empty);
                   history.push("/profile");
                 })
                 .catch((error) => {

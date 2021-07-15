@@ -1,4 +1,4 @@
-import React ,{useContext} from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -7,12 +7,12 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 // import InboxIcon from "@material-ui/icons/Inbox";
 // import DraftsIcon from "@material-ui/icons/Drafts";
-import AssessmentIcon from '@material-ui/icons/Assessment';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import HomeIcon from '@material-ui/icons/Home';
-import {Avatar ,Typography , Box} from '@material-ui/core'
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import HomeIcon from "@material-ui/icons/Home";
+import { Avatar, Typography, Box } from "@material-ui/core";
 
-import { useHistory, useLocation  } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../App";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,12 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   main: {
-
-    display: 'flex',
-    justifyContent: 'center',
-  }
-
-  
+    display: "flex",
+    justifyContent: "center",
+  },
 }));
 
 function ListItemLink(props) {
@@ -37,7 +34,7 @@ function ListItemLink(props) {
 }
 
 export default function SimpleList({ setOpenD }) {
-  const {user} = useContext(UserContext)
+  const { user } = useContext(UserContext);
   const classes = useStyles();
   const history = useHistory();
   const location = useLocation();
@@ -46,7 +43,7 @@ export default function SimpleList({ setOpenD }) {
     {
       title: "Home",
       path: "/",
-      icon: <HomeIcon/>,
+      icon: <HomeIcon />,
     },
     {
       title: "Profile",
@@ -60,22 +57,20 @@ export default function SimpleList({ setOpenD }) {
     },
   ];
   return (
-    <div className={classes.root}
-    color='primary' style={{paddingTop:"20px" ,}}>
-    <div className={classes.main}>
-    <Avatar alt={user.displayName} src={photoURL} style={{width:"80px", height:"80px", display:"flex" , }}/>
-        {/* <Typography
-          color="textPrimary"
-          variant="h5"
-        >
-          {user.displayName}
-        </Typography> */}
+    <div
+      className={classes.root}
+      color="primary"
+      style={{ paddingTop: "20px" }}
+    >
+      <div className={classes.main}>
+        <Avatar
+          alt={user.displayName}
+          src={photoURL}
+          style={{ width: "80px", height: "80px", display: "flex" }}
+        />
+      </div>
 
-    </div>
-      
-
-    
-      <List component="nav" aria-label="main mailbox folders" style={{paddingTop:"100px" ,}}>
+      <List component="nav" style={{ paddingTop: "100px" }}>
         {items.map(function (item, idx) {
           return (
             <ListItem
@@ -91,7 +86,7 @@ export default function SimpleList({ setOpenD }) {
               <ListItemText
                 primary={item.title}
                 style={{
-                  color: location.pathname === item.path ? "blue" : "black",
+                  color: location.pathname === item.path ? "plum" : "black",
                 }}
               />
             </ListItem>
@@ -99,7 +94,6 @@ export default function SimpleList({ setOpenD }) {
         })}
       </List>
       <Divider variant="middle" />
-      
     </div>
   );
 }

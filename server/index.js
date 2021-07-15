@@ -10,7 +10,7 @@ admin.initializeApp({
 });
 
 mongoose.connect(
-  "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance3?retryWrites=true&w=majority",
+  "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance4?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
@@ -24,6 +24,7 @@ const Application = mongoose.model("Application", {
   FatherName: String,
   MotherName: String,
   Address: String,
+  PermanentAddress: String,
   FathersOccupation: String,
   MothersOccupation: String,
   FatherPhone: String,
@@ -53,7 +54,23 @@ app.get("/getUserData/email/:id", async function (req, res) {
   const singleUser = usersDataByEmail.filter((e) => e.email === req.params.id);
   res.send(singleUser);
 });
+app.post("/submit", function (req, res) {
+  console.log(req.user);
+  console.log(req.body);
+  let application = new Application(req.body);
 
+  application
+    .save()
+    .then((response) => res.send("Submitted"))
+    .catch((error) => res.sendStatus(501));
+});
+app.get("/applications", function (req, res) {
+  Application.find()
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => res.sendStatus(501));
+});
 app.use(function (req, res, next) {
   if (req.token) {
     admin
@@ -72,24 +89,9 @@ app.use(function (req, res, next) {
   }
 });
 
-app.post("/submit", function (req, res) {
-  console.log(req.user);
-  console.log(req.body);
-  let application = new Application(req.body);
 
-  application
-    .save()
-    .then((response) => res.send("Submitted"))
-    .catch((error) => res.sendStatus(501));
-});
 
-app.get("/applications", function (req, res) {
-  Application.find()
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => res.sendStatus(501));
-});
+
 
 app.listen(PORT, function () {
   console.log(`App started at port number ${PORT}`);
