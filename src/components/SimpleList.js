@@ -5,13 +5,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
-// import InboxIcon from "@material-ui/icons/Inbox";
-// import DraftsIcon from "@material-ui/icons/Drafts";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HomeIcon from "@material-ui/icons/Home";
-import { Avatar, Typography, Box } from "@material-ui/core";
-
+import { Avatar } from "@material-ui/core";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../App";
 
@@ -28,10 +25,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
 }));
-
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
 export default function SimpleList({ setOpenD }) {
   const { user } = useContext(UserContext);

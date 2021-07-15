@@ -17,7 +17,6 @@ let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
   useEffect(function () {
-    const user = firebase.auth().currentUser;
     firebase.auth().onAuthStateChanged(function (user) {
       setUser(user);
       if(user){

@@ -50,7 +50,7 @@ function AddProfileDetails() {
       .catch((error) => {
         console.log("Error", error);
       });
-  }, []);
+  }, );
 
   const handleChange = (event) => {
     setValues({
