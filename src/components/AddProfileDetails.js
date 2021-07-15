@@ -25,14 +25,13 @@ function AddProfileDetails() {
     phone: "",
     state: "",
     country: "INDIA",
-    Sem1Marks: "",
-    Sem2Marks: "",
-    Sem3Marks: "",
-    Sem4Marks: "",
-    Sem5Marks: "",
-    Sem6Marks: "",
-    Sem7Marks: "",
-    Sem8Marks: "",
+    FatherName: "",
+    MotherName: "",
+    Address: "",
+    FathersOccupation: "",
+    MothersOccupation: "",
+    FatherPhone: "",
+    MotherPhone: "",
   };
   const [values, setValues] = useState(empty);
   const history = useHistory();

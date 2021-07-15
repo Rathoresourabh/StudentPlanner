@@ -22,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 240,
     backgroundColor: theme.palette.background.paper,
   },
+
+  main: {
+
+    display: 'flex',
+    justifyContent: 'center',
+  }
+
+  
 }));
 
 function ListItemLink(props) {
@@ -54,13 +62,17 @@ export default function SimpleList({ setOpenD }) {
   return (
     <div className={classes.root}
     color='primary' style={{paddingTop:"20px" ,}}>
-      <Avatar alt={user.displayName} src={photoURL} style={{width:"80px", height:"80px", display:"flex" , }}/>
-        <Typography
+    <div className={classes.main}>
+    <Avatar alt={user.displayName} src={photoURL} style={{width:"80px", height:"80px", display:"flex" , }}/>
+        {/* <Typography
           color="textPrimary"
           variant="h5"
         >
           {user.displayName}
-        </Typography>
+        </Typography> */}
+
+    </div>
+      
 
     
       <List component="nav" aria-label="main mailbox folders" style={{paddingTop:"100px" ,}}>

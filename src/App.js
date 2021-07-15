@@ -16,11 +16,8 @@ const theme = createMuiTheme({
 let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
-  const [userData, setUserData] = useState({
-    email: undefined,
-  });
-
   useEffect(function () {
+    const user = firebase.auth().currentUser;
     firebase.auth().onAuthStateChanged(function (user) {
       setUser(user);
       if(user){
@@ -36,12 +33,12 @@ function App() {
       });
       }
     });
-  }, []);
+  },);
 
   return (
    
       <ThemeProvider theme={theme}>
-        <UserContext.Provider value={{ user, setUser, userData, setUserData }}>
+        <UserContext.Provider value={{ user, setUser }}>
           <BrowserRouter>
             <Routes />
           </BrowserRouter>

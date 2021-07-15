@@ -13,6 +13,8 @@ import { Avatar } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -20,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  button: {
+
+    paddingRight:'20px'
+  }
 }));
 
 export default function ButtonAppBar({ setOpenD }) {
@@ -31,7 +37,7 @@ export default function ButtonAppBar({ setOpenD }) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="primary">
         <Toolbar>
           <IconButton
             edge="start"
@@ -44,7 +50,7 @@ export default function ButtonAppBar({ setOpenD }) {
           </IconButton>
           <Typography variant="h6" className={classes.title}></Typography>
 
-          <Button color="inherit" onClick={handleLogout}>
+          <Button className={classes.button}color="inherit" onClick={handleLogout}>
             Logout
           </Button>
           <Avatar alt={user.displayName} src={user.photoURL} />

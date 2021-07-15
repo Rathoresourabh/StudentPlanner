@@ -1,16 +1,43 @@
 import { StyledFirebaseAuth } from "react-firebaseui";
 import firebase from "../utils/firebase";
+import "./login.css";
 
 export default function Login() {
   const uiConfig = {
-    // Popup signin flow rather than redirect flow.
     signInFlow: "popup",
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
     signInSuccessUrl: "/",
-    // We will display Google and Facebook as auth providers.
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    ],
+
+    callbacks: {
+      signInSuccessWithAuthResult: async (authResult) => {
+        const userInfo = authResult.additionalUserInfo;
+        if (userInfo.isNewUser && userInfo.providerId === "password") {
+          try {
+            await authResult.user.sendEmailVerification();
+            console.log("Check your email.");
+          } catch (e) {
+            console.log(e);
+          }
+        }
+        return false;
+      },
+    },
   };
+
   return (
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+    <div className="App">
+      <header className="App-header">
+        <h2>Welcome To Student Portal</h2>
+        <div>Sign Up / Register</div>
+
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </header>
+    </div>
   );
 }

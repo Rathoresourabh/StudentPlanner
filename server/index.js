@@ -21,14 +21,14 @@ const Application = mongoose.model("Application", {
   phone: String,
   state: String,
   country: String,
-  Sem1Marks: String,
-  Sem2Marks: String,
-  Sem3Marks: String,
-  Sem4Marks: String,
-  Sem5Marks: String,
-  Sem6Marks: String,
-  Sem7Marks: String,
-  Sem8Marks: String,
+  FatherName: String,
+  MotherName: String,
+  Address: String,
+  FathersOccupation: String,
+  MothersOccupation: String,
+  FatherPhone: String,
+  MotherPhone: String,
+  
 });
 
 let app = express();
