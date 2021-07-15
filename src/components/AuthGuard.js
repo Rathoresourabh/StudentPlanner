@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { UserContext } from "../App";
-import "./AuthGuard.css";
+import "../assets/css/AuthGuard.css";
 export default function AuthGuard({ children }) {
   let { user } = useContext(UserContext);
 

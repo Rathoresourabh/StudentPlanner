@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
 import firebase from "./utils/firebase";
-import './App.css'
+import './assets/css/App.css'
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { ThemeProvider } from "@material-ui/core/styles";
