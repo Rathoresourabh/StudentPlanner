@@ -3,6 +3,7 @@ let cors = require("cors");
 let mongoose = require("mongoose");
 let expressbearertoken = require("express-bearer-token");
 let admin = require("firebase-admin");
+let { parse } = require("json2csv");
 var serviceAccount = require("./service.json");
 
 admin.initializeApp({
@@ -13,6 +14,22 @@ mongoose.connect(
   "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance4?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
+
+const fields = ['firstName',
+  'lastName',
+  'email',
+  'phone',
+  'state',
+  'country',
+  'FatherName',
+  'MotherName',
+  'Address',
+  'PermanentAddress',
+  'FathersOccupation',
+  'MothersOccupation',
+  'FatherPhone',
+  'MotherPhone',];
+  const need = {fields};
 
 const Application = mongoose.model("Application", {
   firstName: String,
@@ -67,7 +84,13 @@ app.post("/submit", function (req, res) {
 app.get("/applications", function (req, res) {
   Application.find()
     .then((response) => {
+
       console.log(response);
+      const csv = parse(response , need);
+      console.log(csv);
+      res.header("Content-Type", "text/csv");
+      res.attachment("application.csv");
+      return res.send(csv);
     })
     .catch((error) => res.sendStatus(501));
 });
