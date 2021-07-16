@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Typography, Button } from "@material-ui/core";
 import { UserContext } from "../App";
 import ShowProfile from "../components/ShowProfile";
+import AddProfileDetail from "../components/AddProfileDetails";
 import { useHistory } from "react-router";
 import axios from "axios";
 
@@ -22,16 +23,14 @@ function Profile() {
   }, );
   let history = useHistory();
   return (
-    <div>
-      
-
+    <div style={{maxWidth:'1280px',margin:'auto'}}>
       <div>
         {showData.map(function (items, idx) {
           return <ShowProfile items={items} />;
         })}
       </div>
-      <Typography variant="h4" color="primary" align="center">
-        Go back to Home Page 
+      {/* <Typography variant="h4" color="primary" align="center">
+        Go back to Home Page
         <div>
           <Button
             variant="outlined"
@@ -44,7 +43,8 @@ function Profile() {
             Go Back To Home Page
           </Button>
         </div>
-      </Typography>
+      </Typography> */}
+      <AddProfileDetail />
     </div>
   );
 }

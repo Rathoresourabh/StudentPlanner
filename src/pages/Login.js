@@ -1,6 +1,7 @@
 import { StyledFirebaseAuth } from "react-firebaseui";
 import firebase from "../utils/firebase";
 import "../assets/css/login.css";
+import Logo from "../assets/images/logo.png"
 
 export default function Login() {
   const uiConfig = {
@@ -30,6 +31,7 @@ export default function Login() {
   return (
     <div className="App">
       <header className="App-header">
+        <img src={Logo}/>
         <h2>Welcome To Student Portal</h2>
         <div>Sign Up / Register</div>
 

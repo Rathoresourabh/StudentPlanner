@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { UserContext } from "../App";
-import AddProfileDetail from "../components/AddProfileDetails";
 import SwipeableDrawer from "../components/SwipeableDrawer";
 function Home() {
   // const { user } = useAuth();
@@ -8,29 +7,35 @@ function Home() {
   let { user } = useContext(UserContext);
 
   return (
-    <div
-      className=""
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        paddingTop: "20px",
-      }}
-    >
-      <h1>
-        Hello {user.displayName}
-        <span style={{ display: "flex", alignItems: "center" }}>
-          {" "}
-          Please Fill in your details to proceed Forward
-        </span>
-      </h1>
-
-      <SwipeableDrawer />
-
-      <AddProfileDetail />
-    </div>
+    <>
+      <div className="container">
+        <div
+          className="row"
+          style={{
+            // display: "flex",
+            // flexDirection: "column",
+            // justifyContent: "center",
+            // alignItems: "center",
+            width: "100%",
+            paddingTop: "20px",
+            minHeight:'calc(100vh - 80px)'
+          }}
+        >
+          <div className="col-md-6 d-flex align-items-center justify-content-center">
+            <SwipeableDrawer />
+          </div>
+          <div className="col-md-6 d-flex align-items-center">
+            <h1>
+              Hello {user.displayName}
+              <span style={{ display: "flex", alignItems: "center" }}>
+                {" "}
+                Please Fill in your details to proceed Forward
+              </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

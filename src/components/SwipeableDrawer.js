@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: 50,
     paddingLeft: theme.spacing(4),
-    backgroundColor: theme.palette.background.default,
+    color: "#fff",
+    backgroundColor: "#282c34",
   },
   img: {
     height: 255,
@@ -52,6 +53,10 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 400,
     overflow: "hidden",
     width: "100%",
+  },
+  footer: {
+    background: "#46484d",
+    color:'#fff'
   },
 }));
 
@@ -100,12 +105,13 @@ function SwipeableDrawer() {
         steps={maxSteps}
         position="static"
         variant="text"
+        className={classes.footer}
         activeStep={activeStep}
         nextButton={
           <Button
             size="small"
             onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
+            disabled={activeStep === maxSteps - 1} style={{color:'#fff'}}
           >
             Next
             {theme.direction === "rtl" ? (
@@ -116,7 +122,7 @@ function SwipeableDrawer() {
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0} style={{color:'#fff'}}>
             {theme.direction === "rtl" ? (
               <KeyboardArrowRight />
             ) : (

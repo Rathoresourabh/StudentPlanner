@@ -44,7 +44,7 @@ export default function SimpleList({ setOpenD }) {
       icon: <AccountCircleIcon />,
     },
     {
-      title: "Chart",
+      title: "Statistics",
       path: "/charts",
       icon: <AssessmentIcon />,
     },
