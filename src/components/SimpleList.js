@@ -48,6 +48,11 @@ export default function SimpleList({ setOpenD }) {
       path: "/charts",
       icon: <AssessmentIcon />,
     },
+    {
+      title: "Results",
+      path: "/results",
+      icon: <AssessmentIcon />,
+    },
   ];
   return (
     <div

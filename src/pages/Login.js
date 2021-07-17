@@ -1,6 +1,6 @@
 import { StyledFirebaseAuth } from "react-firebaseui";
 import firebase from "../utils/firebase";
-import "../assets/css/login.css";
+import "../assets/css/style.css";
 import Logo from "../assets/images/logo.png"
 
 export default function Login() {

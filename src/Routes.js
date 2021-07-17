@@ -7,6 +7,7 @@ import Charts from "./pages/Charts";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/ErrorPage";
+import Results from "./pages/Results";
 function Routes() {
   return (
     <Switch>
@@ -31,6 +32,13 @@ function Routes() {
         <AuthGuard>
           <MainLayout>
             <Charts />
+          </MainLayout>
+        </AuthGuard>
+      </Route>
+      <Route path="/results" exact>
+        <AuthGuard>
+          <MainLayout>
+            <Results />
           </MainLayout>
         </AuthGuard>
       </Route>

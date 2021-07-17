@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Typography, Button } from "@material-ui/core";
 import { UserContext } from "../App";
+import { Link } from "react-router-dom";
 import ShowProfile from "../components/ShowProfile";
 import AddProfileDetail from "../components/AddProfileDetails";
 import { useHistory } from "react-router";
@@ -26,7 +27,12 @@ function Profile() {
   let history = useHistory();
   return (
     <div style={{ maxWidth: "1280px", margin: "auto" }}>
-      <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>Personal Details</h2>
+      <div className="d-flex w-100 justify-content-between align-items-center mt-5">
+        <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>
+          Personal Details
+        </h2>
+        <Link to="/Marks" className="primary-btn" style={{maxWidth:200,padding:5,maxHeight:50}}>Enter your marks</Link>
+      </div>
       <div>
         {showData.map(function (items, idx) {
           return <ShowProfile items={items} />;
@@ -35,10 +41,10 @@ function Profile() {
 
       <div className="row" style={{ marginTop: 80 }}>
         <div className="col-md-4 d-flex align-items-center">
-          <SwipeableDrawer />
-          {/* <div className="top-img-float">
+          {/* <SwipeableDrawer /> */}
+          <div className="top-img-float">
             <img alt="" src={topImg} />
-          </div> */}
+          </div>
         </div>
         <div className="col-md-8 d-flex align-items-center">
           <AddProfileDetail />
