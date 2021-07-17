@@ -15,27 +15,30 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
-const fields = ['firstName',
-  'lastName',
-  'email',
-  'phone',
-  'state',
-  'country',
-  'FatherName',
-  'MotherName',
-  'Address',
-  'PermanentAddress',
-  'FathersOccupation',
-  'MothersOccupation',
-  'FatherPhone',
-  'MotherPhone',];
-  const need = {fields};
+const fields = [
+  "firstName",
+  "lastName",
+  "email",
+  "phone",
+  "state",
+  "country",
+  "FatherName",
+  "MotherName",
+  "Address",
+  "PermanentAddress",
+  "FathersOccupation",
+  "MothersOccupation",
+  "FatherPhone",
+  "FatherEmail",
+  "MotherPhone",
+];
+const need = { fields };
 
 const Application = mongoose.model("Application", {
   firstName: String,
   lastName: String,
   email: String,
-  phone: String,
+  phone: Number,
   state: String,
   country: String,
   FatherName: String,
@@ -44,9 +47,9 @@ const Application = mongoose.model("Application", {
   PermanentAddress: String,
   FathersOccupation: String,
   MothersOccupation: String,
-  FatherPhone: String,
-  MotherPhone: String,
-  
+  FatherPhone: Number,
+  MotherPhone: Number,
+  BloodGroup: String,
 });
 
 let app = express();
@@ -84,9 +87,8 @@ app.post("/submit", function (req, res) {
 app.get("/applications", function (req, res) {
   Application.find()
     .then((response) => {
-
       console.log(response);
-      const csv = parse(response , need);
+      const csv = parse(response, need);
       console.log(csv);
       res.header("Content-Type", "text/csv");
       res.attachment("application.csv");
@@ -111,10 +113,6 @@ app.use(function (req, res, next) {
     res.sendStatus(401);
   }
 });
-
-
-
-
 
 app.listen(PORT, function () {
   console.log(`App started at port number ${PORT}`);

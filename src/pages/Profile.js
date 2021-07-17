@@ -26,7 +26,7 @@ function Profile() {
   let history = useHistory();
   return (
     <div style={{ maxWidth: "1280px", margin: "auto" }}>
-      <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>PROFILE</h2>
+      <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>Personal Details</h2>
       <div>
         {showData.map(function (items, idx) {
           return <ShowProfile items={items} />;

@@ -3,7 +3,7 @@ export const SemWiseSubjects = [
     semName: "1",
     subjects: [
       {
-        english: {
+        EngineeringMathematics1: {
           creditValue: "",
           UE: "",
           IA: "",
@@ -11,7 +11,7 @@ export const SemWiseSubjects = [
           TW_O: "",
           GP: "",
         },
-        hindi: {
+        FundamentalOfCivilEngineering: {
           creditValue: "",
           UE: "",
           IA: "",
@@ -19,7 +19,39 @@ export const SemWiseSubjects = [
           TW_O: "",
           GP: "",
         },
-        maths: {
+        EngineeringGraphics: {
+          creditValue: "",
+          UE: "",
+          IA: "",
+          TW_P: "",
+          TW_O: "",
+          GP: "",
+        },
+        EngineeringChemistry: {
+          creditValue: "",
+          UE: "",
+          IA: "",
+          TW_P: "",
+          TW_O: "",
+          GP: "",
+        },
+        FundamentalsOfElectricalEngineering: {
+          creditValue: "",
+          UE: "",
+          IA: "",
+          TW_P: "",
+          TW_O: "",
+          GP: "",
+        },
+        ProfessionalSkillDevelopment1: {
+          creditValue: "",
+          UE: "",
+          IA: "",
+          TW_P: "",
+          TW_O: "",
+          GP: "",
+        },
+        PrinciplesAndParadigms: {
           creditValue: "",
           UE: "",
           IA: "",

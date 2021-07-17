@@ -24,13 +24,15 @@ function AddProfileDetails() {
     FathersOccupation: "",
     MothersOccupation: "",
     FatherPhone: "",
+    FatherEmail: "",
     MotherPhone: "",
-    prn_number:"",
+    BloodGroup: "",
+    prn_number: "",
   };
   const [values, setValues] = useState(empty);
   const [currentPage, setCurrentPage] = useState("one");
   const [showSubmitButton, setShowSubmitButton] = useState(false);
-  const [numberOfSem,setNumberOfSem] = useState(0);
+  const [numberOfSem, setNumberOfSem] = useState(0);
   const history = useHistory();
   // let { userData, setUserData } = useContext(UserContext);
 
@@ -58,10 +60,6 @@ function AddProfileDetails() {
     event.preventDefault();
     setCurrentPage("two");
   };
-
-
- 
-
 
   return (
     <>
@@ -139,6 +137,109 @@ function AddProfileDetails() {
                   ))}
                 </select>
               </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Father's Name"
+                  name="FatherName"
+                  onChange={handleChange}
+                  required
+                  value={values.FatherName}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Mother's Name"
+                  name="MotherName"
+                  onChange={handleChange}
+                  required
+                  value={values.MotherName}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Current Address"
+                  name="Address"
+                  onChange={handleChange}
+                  required
+                  value={values.Address}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Permanent Address"
+                  name="PermanentAddress"
+                  onChange={handleChange}
+                  required
+                  value={values.PermanentAddress}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Father's Occupation"
+                  name="FathersOccupation"
+                  onChange={handleChange}
+                  required
+                  value={values.FathersOccupation}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Mother's Occupation"
+                  name="MothersOccupation"
+                  onChange={handleChange}
+                  required
+                  value={values.MothersOccupation}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Father's Contact Number"
+                  name="FatherPhone"
+                  type="number"
+                  onChange={handleChange}
+                  required
+                  value={values.FatherPhone}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Mother's Contact No."
+                  name="MotherPhone"
+                  type="number"
+                  onChange={handleChange}
+                  required
+                  value={values.MotherPhone}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Father's Email Address"
+                  name="FatherEmail"
+                  type="number"
+                  onChange={handleChange}
+                  required
+                  value={values.FatherEmail}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Blood Group"
+                  name="BloodGroup"
+                  onChange={handleChange}
+                  required
+                  value={values.BloodGroup}
+                  variant="outlined"
+                />
+              </div>
             </div>
           </div>
           <div className="button-form-footer">
@@ -176,24 +277,24 @@ function AddProfileDetails() {
             </div>
 
             <div className="button-form-footer">
-                <button
-                  className="btn  secondary-btn"
-                  // disabled={!values}
-                  onClick={function () {
-                    axios
-                      .post("http://localhost:5000/submit", values)
-                      .then((response) => {
-                        console.log("Success", response);
-                        enqueueSnackbar("Success");
-                        history.push("/profile");
-                      })
-                      .catch((error) => {
-                        console.log("Error", error);
-                      });
-                  }}
-                >
-                  Submit
-                </button>
+              <button
+                className="btn  secondary-btn"
+                // disabled={!values}
+                onClick={function () {
+                  axios
+                    .post("http://localhost:5000/submit", values)
+                    .then((response) => {
+                      console.log("Success", response);
+                      enqueueSnackbar("Success");
+                      history.push("/profile");
+                    })
+                    .catch((error) => {
+                      console.log("Error", error);
+                    });
+                }}
+              >
+                Submit
+              </button>
               {/* <Button
                   color="primary"
                   variant="contained"
