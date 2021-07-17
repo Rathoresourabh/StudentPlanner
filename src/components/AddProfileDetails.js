@@ -1,15 +1,7 @@
 import { useState, useEffect, useContext } from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
-  TextField,
-} from "@material-ui/core";
 import { states } from "./Data/StateData";
 import { SemMarks } from "./Data/SemMarks";
+import { SemWiseSubjects } from "./Data/SemWiseSubjects";
 import { useHistory } from "react-router";
 import axios from "axios";
 import { useSnackbar } from "notistack";
@@ -33,8 +25,12 @@ function AddProfileDetails() {
     MothersOccupation: "",
     FatherPhone: "",
     MotherPhone: "",
+    prn_number:"",
   };
   const [values, setValues] = useState(empty);
+  const [currentPage, setCurrentPage] = useState("one");
+  const [showSubmitButton, setShowSubmitButton] = useState(false);
+  const [numberOfSem,setNumberOfSem] = useState(0);
   const history = useHistory();
   // let { userData, setUserData } = useContext(UserContext);
 
@@ -50,7 +46,7 @@ function AddProfileDetails() {
       .catch((error) => {
         console.log("Error", error);
       });
-  }, );
+  });
 
   const handleChange = (event) => {
     setValues({
@@ -60,150 +56,158 @@ function AddProfileDetails() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    setCurrentPage("two");
   };
 
+
+ 
+
+
   return (
-    <form autoComplete="on" noValidate onSubmit={handleSubmit}>
-      <Card>
-        <CardHeader
-          subheader="The information can be edited"
-          title="Profile "
-        />
-        <Divider />
-        <CardContent>
-          <Grid container spacing={3}>
-            <Grid item md={6} xs={12}>
-              <TextField
-                // className={classes.textField}
-                fullWidth
-                helperText="Please specify the first name"
-                label="First name"
-                name="firstName"
-                onChange={handleChange}
-                required
-                value={values.firstName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                fullWidth
-                label="Last name"
-                name="lastName"
-                onChange={handleChange}
-                required
-                value={values.lastName}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                fullWidth
-                label="Email Address"
-                name="email"
-                onChange={handleChange}
-                required
-                value={user.email}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                fullWidth
-                label="Phone Number"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-                required
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                fullWidth
-                label="Country"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            {SemMarks.map(function (item, idx) {
-              return (
-                <Grid key={idx} item md={6} xs={12}>
-                  <TextField
-                    fullWidth
-                    label={item.title}
-                    name={item.name}
+    <>
+      {currentPage === "one" ? (
+        <form autoComplete="on" onSubmit={handleSubmit}>
+          <div className="form-main">
+            <div className="row">
+              <div className="col-md-6">
+                <input
+                  placeholder="Please specify the first name"
+                  placeholder="First name"
+                  name="firstName"
+                  onChange={handleChange}
+                  required
+                  value={values.firstName}
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Last name"
+                  name="lastName"
+                  onChange={handleChange}
+                  required
+                  value={values.lastName}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Email Address"
+                  name="email"
+                  onChange={handleChange}
+                  required
+                  value={user.email}
+                  variant="outlined"
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Phone Number"
+                  name="phone"
+                  onChange={handleChange}
+                  type="number"
+                  value={values.phone}
+                  variant="outlined"
+                  required
+                />
+              </div>
+              <div className="col-md-6">
+                <input
+                  placeholder="Country"
+                  name="country"
+                  onChange={handleChange}
+                  required
+                  value={values.country}
+                  variant="outlined"
+                />
+              </div>
+
+              <div className="col-md-6">
+                <select
+                  placeholder="Select State"
+                  name="state"
+                  onChange={handleChange}
+                  required
+                  select
+                  SelectProps={{ native: true }}
+                  value={values.state}
+                  variant="outlined"
+                >
+                  {states.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="button-form-footer">
+            <button className="btn  secondary-btn" type="submit">
+              {" "}
+              Next
+            </button>
+          </div>
+        </form>
+      ) : (
+        //college details second page
+        <>
+          <form autoComplete="on" onSubmit={handleSubmit}>
+            <div
+              className="back-btn"
+              onClick={() => {
+                setCurrentPage("one");
+                setShowSubmitButton(false);
+              }}
+            >
+              back
+            </div>
+            <div className="form-main">
+              <div className="row">
+                <div className="col-md-12 prn_number">
+                  {/* <input
+                    placeholder="Please enter you PRN number"
+                    name="prn_number"
                     onChange={handleChange}
-                    required
-                    value={values[item.name]}
-                    variant="outlined"
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </CardContent>
-        <Divider />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
-          <Button
-            color="primary"
-            variant="contained"
-            // disabled={!values}
-            onClick={function () {
-              axios
-                .post("http://localhost:5000/submit", values)
-                .then((response) => {
-                  console.log("Success", response);
-                  enqueueSnackbar("Success");
-                  history.push("/profile");
-                })
-                .catch((error) => {
-                  console.log("Error", error);
-                });
-            }}
-          >
-            Submit
-          </Button>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={function () {
-              setValues(empty);
-            }}
-          >
-            Reset
-          </Button>
-        </div>
-      </Card>
-    </form>
+                    value={values.prn_number}
+                    type="number"
+                  /> */}
+                </div>
+              </div>
+            </div>
+
+            <div className="button-form-footer">
+                <button
+                  className="btn  secondary-btn"
+                  // disabled={!values}
+                  onClick={function () {
+                    axios
+                      .post("http://localhost:5000/submit", values)
+                      .then((response) => {
+                        console.log("Success", response);
+                        enqueueSnackbar("Success");
+                        history.push("/profile");
+                      })
+                      .catch((error) => {
+                        console.log("Error", error);
+                      });
+                  }}
+                >
+                  Submit
+                </button>
+              {/* <Button
+                  color="primary"
+                  variant="contained"
+                  onClick={function () {
+                    setValues(empty);
+                  }}
+                >
+                  Reset
+                </Button> */}
+            </div>
+          </form>
+        </>
+      )}
+    </>
   );
 }
 

@@ -29,3 +29,135 @@
     justify-content: flex-end;
     background-color: "#282c34",
   }
+  .hompeage-banner{
+    background:rgb(40, 44, 52);
+    padding:7px 20px;
+    color:#fff;
+    display: inline;
+    border-radius:10px;
+    margin-top:70px;
+  }
+  .proceed-text{
+    margin-top:70px;
+    letter-spacing: 3px;
+    font-size:18px;
+  }
+  .primary-btn{
+    background:rgb(40, 44, 52);
+    color:#fff;
+    padding:10px 30px;
+    border-radius:25px;
+    max-width:300px;
+    width:100%;
+    border:2px solid #5353ea;
+    letter-spacing: 1px;
+  }
+  .primary-btn:hover{
+    background:#fff;
+    
+    color:#5353ea;
+  }
+  .secondary-btn{
+    background:rgb(40, 44, 52);
+    border-radius:6px;
+    color:#fff;
+    padding:8px 30px;
+    max-width:150px;
+    width:100%;
+    border:2px solid #5353ea;
+    letter-spacing: 1px;
+  }
+  .secondary-btn:hover{
+    background:#fff;
+    
+    color:rgb(40, 44, 52);
+  }
+  .bubble{
+    position:absolute;
+    border:10px solid #282c3411;
+  }
+  .bubble1{
+    top:130px;
+    right:150px;
+    height:200px;
+    width:150px;
+  }
+  .bubble2{
+    top:50px;
+    right:90px;
+    height:250px;
+    width:180px;
+  }
+  .top-img-float{
+    max-width: 300px;
+    max-height: 600px;
+    position: relative;
+  }
+  .top-img-float img{
+    position: relative;
+    max-height:600px;
+    max-width:100%;
+    transform:translate(0);
+    transition:all .3s ease-in
+  }
+  .top-img-float::before{
+    content:'';
+    position:absolute;
+    bottom:-10px;
+    left:-10px;
+    right:10px;
+    top:10px;
+    border:6px solid #282c34
+
+  }
+  .form-main input,.form-main select{
+    padding:8px 10px;
+    border:none;
+    border-bottom:2px solid #282c34;
+    font-size:13px;
+    outline:none;
+    width:100%;
+    transition:all .3s ease-in;
+    margin:20px;
+  }
+   .form-main input:focus{
+    border:2px solid #282c34;
+    border-radius:4px;
+  }
+  .button-form-footer{
+    margin:20px;
+    text-align: right;
+  }
+  .prn_number{
+    position:relative;
+  }
+  .prn_number input{
+    
+    border-radius:6px;
+  }
+  .proceed_prn{
+    position:absolute;
+    top:18px;
+    right:-8px;
+    height:40px;
+    width:160px;
+    background:#282c34;
+    color:#fff;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+  .swal-button{
+    background:#282c34
+  }
+  .back-btn{
+    color:#282c34;
+    font-size:13px;
+    font-weight:700;
+    cursor: pointer;
+    margin-bottom:100px;
+  }
+  .app-bg{
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../images/bg-img.png');
+    min-height:100vh;
+    background-size:cover;
+  }

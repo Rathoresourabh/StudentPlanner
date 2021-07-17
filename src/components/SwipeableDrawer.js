@@ -36,7 +36,6 @@ const tutorialSteps = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 400,
     flexGrow: 1,
   },
   header: {
@@ -46,17 +45,20 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
     color: "#fff",
     backgroundColor: "#282c34",
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
   },
   img: {
     height: 255,
     display: "block",
-    maxWidth: 400,
     overflow: "hidden",
     width: "100%",
   },
   footer: {
     background: "#46484d",
-    color:'#fff'
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    color: "#fff",
   },
 }));
 

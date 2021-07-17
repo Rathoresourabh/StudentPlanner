@@ -4,6 +4,8 @@ import { UserContext } from "../App";
 import ShowProfile from "../components/ShowProfile";
 import AddProfileDetail from "../components/AddProfileDetails";
 import { useHistory } from "react-router";
+import topImg from "../assets/images/topimg.jpg";
+import SwipeableDrawer from "../components/SwipeableDrawer";
 import axios from "axios";
 
 function Profile() {
@@ -23,28 +25,25 @@ function Profile() {
   }, );
   let history = useHistory();
   return (
-    <div style={{maxWidth:'1280px',margin:'auto'}}>
+    <div style={{ maxWidth: "1280px", margin: "auto" }}>
+      <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>PROFILE</h2>
       <div>
         {showData.map(function (items, idx) {
           return <ShowProfile items={items} />;
         })}
       </div>
-      {/* <Typography variant="h4" color="primary" align="center">
-        Go back to Home Page
-        <div>
-          <Button
-            variant="outlined"
-            color="primary"
-            align="center"
-            onClick={function () {
-              history.push("/");
-            }}
-          >
-            Go Back To Home Page
-          </Button>
+
+      <div className="row" style={{ marginTop: 80 }}>
+        <div className="col-md-4 d-flex align-items-center">
+          <SwipeableDrawer />
+          {/* <div className="top-img-float">
+            <img alt="" src={topImg} />
+          </div> */}
         </div>
-      </Typography> */}
-      <AddProfileDetail />
+        <div className="col-md-8 d-flex align-items-center">
+          <AddProfileDetail />
+        </div>
+      </div>
     </div>
   );
 }
