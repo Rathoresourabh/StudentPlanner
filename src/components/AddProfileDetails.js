@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { states } from "./Data/StateData";
+import { Branch } from "./Data/Branch";
 import { SemMarks } from "./Data/SemMarks";
 import { SemWiseSubjects } from "./Data/SemWiseSubjects";
 import { useHistory } from "react-router";
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { UserContext } from "../App";
@@ -28,6 +30,8 @@ function AddProfileDetails() {
     MotherPhone: "",
     BloodGroup: "",
     prn_number: "",
+    Division: "",
+    RollNo: "",
   };
   const [values, setValues] = useState(empty);
   const [currentPage, setCurrentPage] = useState("one");
@@ -62,7 +66,7 @@ function AddProfileDetails() {
   };
 
   return (
-    <>
+    <div>
       {currentPage === "one" ? (
         <form autoComplete="on" onSubmit={handleSubmit}>
           <div className="form-main">
@@ -223,7 +227,6 @@ function AddProfileDetails() {
                 <input
                   placeholder="Father's Email Address"
                   name="FatherEmail"
-                  type="number"
                   onChange={handleChange}
                   required
                   value={values.FatherEmail}
@@ -251,7 +254,7 @@ function AddProfileDetails() {
         </form>
       ) : (
         //college details second page
-        <>
+        <div>
           <form autoComplete="on" onSubmit={handleSubmit}>
             <div
               className="back-btn"
@@ -260,18 +263,45 @@ function AddProfileDetails() {
                 setShowSubmitButton(false);
               }}
             >
-              back
+              <KeyboardBackspaceIcon/>
             </div>
             <div className="form-main">
               <div className="row">
-                <div className="col-md-12 prn_number">
-                  {/* <input
-                    placeholder="Please enter you PRN number"
-                    name="prn_number"
+                <div className="col-md-6">
+                  <select
+                    placeholder="Select State"
+                    name="state"
                     onChange={handleChange}
-                    value={values.prn_number}
-                    type="number"
-                  /> */}
+                    required
+                    select
+                    SelectProps={{ native: true }}
+                    value={values.Branch}
+                    variant="outlined"
+                  >
+                    {Branch.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-md-6">
+                  <input
+                    placeholder="Division if any"
+                    name="Division"
+                    onChange={handleChange}
+                    value={values.Division}
+                    variant="outlined"
+                  />
+                </div>
+                <div className="col-md-6">
+                  <input
+                    placeholder="Enter Your Roll no."
+                    name="RollNo"
+                    onChange={handleChange}
+                    value={values.RollNo}
+                    variant="outlined"
+                  />
                 </div>
               </div>
             </div>
@@ -306,9 +336,9 @@ function AddProfileDetails() {
                 </Button> */}
             </div>
           </form>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

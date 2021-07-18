@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 
 const NotFound = () => (
-  <>
+  <div>
     <Helmet>
       <title>404 | Material Kit</title>
     </Helmet>
@@ -49,7 +49,7 @@ const NotFound = () => (
         </Box>
       </Container>
     </Box>
-  </>
+  </div>
 );
 
 export default NotFound;

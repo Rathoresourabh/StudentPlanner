@@ -29,9 +29,9 @@ function Profile() {
     <div style={{ maxWidth: "1280px", margin: "auto" }}>
       <div className="d-flex w-100 justify-content-between align-items-center mt-5">
         <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>
-          Personal Details
+          PROFILE
         </h2>
-        <Link to="/Marks" className="primary-btn" style={{maxWidth:200,padding:5,maxHeight:50}}>Enter your marks</Link>
+        <Link to="/results" className="primary-btn" style={{maxWidth:200,padding:5,maxHeight:50}}>Enter your marks</Link>
       </div>
       <div>
         {showData.map(function (items, idx) {

@@ -50,6 +50,8 @@ const Application = mongoose.model("Application", {
   FatherPhone: Number,
   MotherPhone: Number,
   BloodGroup: String,
+  Division: String,
+  RollNo: Number,
 });
 
 let app = express();

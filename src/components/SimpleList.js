@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HomeIcon from "@material-ui/icons/Home";
+import ShowChartIcon from '@material-ui/icons/ShowChart';
 import { Avatar } from "@material-ui/core";
 import { useHistory, useLocation } from "react-router";
 import { UserContext } from "../App";
@@ -51,7 +52,7 @@ export default function SimpleList({ setOpenD }) {
     {
       title: "Results",
       path: "/results",
-      icon: <AssessmentIcon />,
+      icon: <ShowChartIcon />,
     },
   ];
   return (
