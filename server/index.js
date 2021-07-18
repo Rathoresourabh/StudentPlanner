@@ -52,6 +52,7 @@ const Application = mongoose.model("Application", {
   BloodGroup: String,
   Division: String,
   RollNo: Number,
+  PRN: Number,
 });
 
 let app = express();

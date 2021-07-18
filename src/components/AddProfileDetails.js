@@ -32,6 +32,7 @@ function AddProfileDetails() {
     prn_number: "",
     Division: "",
     RollNo: "",
+    PRN: "" ,
   };
   const [values, setValues] = useState(empty);
   const [currentPage, setCurrentPage] = useState("one");
@@ -298,8 +299,19 @@ function AddProfileDetails() {
                   <input
                     placeholder="Enter Your Roll no."
                     name="RollNo"
+                    required
                     onChange={handleChange}
                     value={values.RollNo}
+                    variant="outlined"
+                  />
+                </div>
+                <div className="col-md-6">
+                  <input
+                    placeholder="Enter Your PRN"
+                    name="PRN"
+                    required
+                    onChange={handleChange}
+                    value={values.PRN}
                     variant="outlined"
                   />
                 </div>
