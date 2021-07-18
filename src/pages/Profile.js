@@ -23,7 +23,7 @@ function Profile() {
       .catch((error) => {
         console.log("Error", error);
       });
-  }, );
+  }, [user.email]);
   let history = useHistory();
   return (
     <div style={{ maxWidth: "1280px", margin: "auto" }}>
@@ -31,13 +31,9 @@ function Profile() {
         <h2 style={{ marginTop: 20, letterSpacing: "2px" }}>
           PROFILE
         </h2>
-        <Link to="/results" className="primary-btn" style={{maxWidth:200,padding:5,maxHeight:50}}>Enter your marks</Link>
+        <Link to="/results" className="primary-btn text-center" style={{maxWidth:200,padding:5,maxHeight:50,textDecoration:'none'}}>Enter your marks</Link>
       </div>
-      <div>
-        {showData.map(function (items, idx) {
-          return <ShowProfile items={items} />;
-        })}
-      </div>
+      
 
       <div className="row" style={{ marginTop: 80 }}>
         <div className="col-md-4 d-flex align-items-center">

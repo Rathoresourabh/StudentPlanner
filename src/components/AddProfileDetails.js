@@ -53,7 +53,7 @@ function AddProfileDetails() {
       .catch((error) => {
         console.log("Error", error);
       });
-  });
+  },[user.email]);
 
   const handleChange = (event) => {
     setValues({
@@ -264,8 +264,9 @@ function AddProfileDetails() {
                 setShowSubmitButton(false);
               }}
             >
-              <KeyboardBackspaceIcon/>
+              <KeyboardBackspaceIcon />
             </div>
+            <h3 className="p-4 mb-5">College Details</h3>
             <div className="form-main">
               <div className="row">
                 <div className="col-md-6">
@@ -333,6 +334,8 @@ function AddProfileDetails() {
                     .catch((error) => {
                       console.log("Error", error);
                     });
+
+                  localStorage.setItem('prn',values.PRN)
                 }}
               >
                 Submit

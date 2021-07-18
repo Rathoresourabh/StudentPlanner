@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function BasicTable({ items }) {
+export default function BasicTable({ items,passItems }) {
   const classes = useStyles();
   const [semData,setSemData] = useState(items)
 
@@ -28,6 +28,7 @@ export default function BasicTable({ items }) {
       }
     })
     setSemData(updated);
+    passItems(updated);
   }
 
 

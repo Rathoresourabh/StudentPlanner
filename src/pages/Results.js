@@ -2,11 +2,13 @@ import React ,{useState} from 'react';
 import swal from "sweetalert";
 import SemTable from "../components/semester/SemTable";
 import {SemWiseSubjects} from "../components/Data/SemWiseSubjects";
+import { useHistory } from 'react-router-dom';
 
 function Results() {
     const [semData, setSemData] = useState([]);
     const [, setNumberOfSem] = useState(0);
-    const [prn, setPrn] = useState("");
+    const [prn, setPrn] = useState(localStorage.getItem('prn') || "");
+    const history = useHistory()
 
     const calculateSem = () => {
       if (prn === "" || prn === null) {
@@ -14,6 +16,8 @@ function Results() {
           title: "",
           text: "Please fill PRN number to proceed",
           icon: "warning",
+        }).then(status => {
+          history.push('/charts');
         });
       } else {
         let number = prn;
@@ -34,7 +38,26 @@ function Results() {
       }
     };
 
-    const submitResults = () => {}
+    const submitResults = () => {
+      localStorage.setItem('semData',JSON.stringify(semData))
+      localStorage.setItem('prn',prn)
+      swal({
+        title: "",
+        text: "Data submitted successfully",
+        icon: "success",
+      });
+    }
+
+    const handleSemDataChange = (e) => {
+      let localSem = [...semData];
+      console.log(localSem)
+      localSem.forEach(sem => {
+        if(sem.semName === e.semName){
+           sem.subjects = e.subjects
+        }
+      })
+      setSemData(localSem)
+    }
 
     
     return (
@@ -54,15 +77,25 @@ function Results() {
                 Proceed
               </button>
               {semData.map((items, index) => {
-                return <SemTable items={items} key={index} />;
+                return (
+                  <SemTable
+                    items={items}
+                    key={index}
+                    passItems={(e) => handleSemDataChange(e)}
+                  />
+                );
               })}
               <div className="d-flex justify-content-end">
-                <button
-                  className="primary-btn my-5"
-                  onClick={() => submitResults()}
-                >
-                  Submit
-                </button>
+                {semData.length > 0 ? (
+                  <button
+                    className="primary-btn my-5"
+                    onClick={() => submitResults()}
+                  >
+                    Submit
+                  </button>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

@@ -167,10 +167,29 @@
     font-size:13px;
     font-weight:700;
     cursor: pointer;
-    margin-bottom:100px;
+    margin-bottom:20px;
   }
   .app-bg{
     background:linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../images/bg-img.png');
     min-height:100vh;
     background-size:cover;
+  }
+  .card-avatar img{
+    border-radius:50%;
+  }
+  .custom-card{
+    border:2px solid #282c34;
+    background:#282c34
+  }
+  .customli{
+    font-size:14px;
+    flex-wrap:wrap;
+  }
+  .modal-dialog{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+    max-width:900px;
+    width:100%;
   }

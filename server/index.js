@@ -31,6 +31,10 @@ const fields = [
   "FatherPhone",
   "FatherEmail",
   "MotherPhone",
+  "BloodGroup",
+  "Division",
+  "RollNo",
+  "PRN",
 ];
 const need = { fields };
 
@@ -49,6 +53,7 @@ const Application = mongoose.model("Application", {
   MothersOccupation: String,
   FatherPhone: Number,
   MotherPhone: Number,
+  FatherEmail: String,
   BloodGroup: String,
   Division: String,
   RollNo: Number,
@@ -64,30 +69,51 @@ app.use(express.json());
 app.use(cors());
 app.use(expressbearertoken());
 
+//check our api is working
+
 app.get("/", function (req, res) {
   // console.log(req.user)
   res.send("Working");
 });
+
+//get all users data
 app.get("/getUserData", async function (req, res) {
   const usersData = await Application.find();
   res.send(usersData);
 });
+
+// get single user by email
 app.get("/getUserData/email/:id", async function (req, res) {
   const usersDataByEmail = await Application.find();
   const singleUser = usersDataByEmail.filter((e) => e.email === req.params.id);
   res.send(singleUser);
 });
-app.post("/submit", function (req, res) {
+
+//submit form - personal detail.
+app.post("/submit", async function (req, res) {
   console.log(req.user);
   console.log(req.body);
-  let application = new Application(req.body);
-
-  application
-    .save()
-    .then((response) => res.send("Submitted"))
-    .catch((error) => res.sendStatus(501));
+  const usersDataByEmail = await Application.find();
+  const singleUser = usersDataByEmail.filter((e) => e.email === req.body.email);
+  if (singleUser) {
+    //yet to be implemented.
+    console.log(singleUser)
+    Application.findByIdAndUpdate(singleUser[0]._id, req.body, (err, res) => {
+      if (err) throw err;
+      console.log("data edited....");
+    });
+    res.send(singleUser)
+  } else {
+    let application = new Application(req.body);
+    application
+      .save()
+      .then((response) => res.send("Submitted"))
+      .catch((error) => res.sendStatus(501));
+  }
 });
-app.get("/applications", function (req, res) {
+
+//csv generate - personal details
+app.get("/detail", function (req, res) {
   Application.find()
     .then((response) => {
       console.log(response);
@@ -99,6 +125,8 @@ app.get("/applications", function (req, res) {
     })
     .catch((error) => res.sendStatus(501));
 });
+
+//verify user
 app.use(function (req, res, next) {
   if (req.token) {
     admin
