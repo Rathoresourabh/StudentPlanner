@@ -171,35 +171,26 @@ function Charts() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {modalContent.subjects.map((item, index) => (
-                      <TableRow key={index}>
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          style={{ textTransform: "capitalize" }}
-                        >
-                          {item.subjectName}
-                        </TableCell>
-                        <TableCell align="center">
-                          {item.creditValue}
-                        </TableCell>
-                        <TableCell align="center">
-                          {item.UE}
-                        </TableCell>
-                        <TableCell align="center">
-                          {item.IA}
-                        </TableCell>
-                        <TableCell align="center">
-                         {item.TW_P}
-                        </TableCell>
-                        <TableCell align="center">
-                         {item.TW_O}
-                        </TableCell>
-                        <TableCell align="center">
-                          {item.GP}
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {modalContent.subjects &&
+                      modalContent?.subjects.map((item, index) => (
+                        <TableRow key={index}>
+                          <TableCell
+                            component="th"
+                            scope="row"
+                            style={{ textTransform: "capitalize" }}
+                          >
+                            {item.subjectName}
+                          </TableCell>
+                          <TableCell align="center">
+                            {item.creditValue}
+                          </TableCell>
+                          <TableCell align="center">{item.UE}</TableCell>
+                          <TableCell align="center">{item.IA}</TableCell>
+                          <TableCell align="center">{item.TW_P}</TableCell>
+                          <TableCell align="center">{item.TW_O}</TableCell>
+                          <TableCell align="center">{item.GP}</TableCell>
+                        </TableRow>
+                      ))}
                   </TableBody>
                 </Table>
               </TableContainer>
