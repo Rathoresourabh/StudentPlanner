@@ -3,7 +3,7 @@ import React from "react";
 import AuthGuard from "./components/AuthGuard";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
-import Charts from "./pages/Charts";
+import Charts from "./pages/Statistics";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import ErrorPage from "./pages/ErrorPage";
@@ -28,7 +28,7 @@ function Routes() {
           </MainLayout>
         </AuthGuard>
       </Route>
-      <Route path="/charts" exact>
+      <Route path="/statistics" exact>
         <AuthGuard>
           <MainLayout>
             <Charts />

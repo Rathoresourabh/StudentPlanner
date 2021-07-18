@@ -1,10 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { states } from "./Data/StateData";
 import { Branch } from "./Data/Branch";
-import { SemMarks } from "./Data/SemMarks";
-import { SemWiseSubjects } from "./Data/SemWiseSubjects";
-import { useHistory } from "react-router";
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { UserContext } from "../App";
@@ -32,14 +29,11 @@ function AddProfileDetails() {
     prn_number: "",
     Division: "",
     RollNo: "",
-    PRN: "" ,
+    PRN: "",
   };
   const [values, setValues] = useState(empty);
   const [currentPage, setCurrentPage] = useState("one");
-  const [showSubmitButton, setShowSubmitButton] = useState(false);
-  const [numberOfSem, setNumberOfSem] = useState(0);
-  const history = useHistory();
-  // let { userData, setUserData } = useContext(UserContext);
+  const [setShowSubmitButton] = useState(false);
 
   useEffect(() => {
     axios
@@ -53,7 +47,7 @@ function AddProfileDetails() {
       .catch((error) => {
         console.log("Error", error);
       });
-  },[user.email]);
+  }, [user.email]);
 
   const handleChange = (event) => {
     setValues({
@@ -74,7 +68,6 @@ function AddProfileDetails() {
             <div className="row">
               <div className="col-md-6">
                 <input
-                  placeholder="Please specify the first name"
                   placeholder="First name"
                   name="firstName"
                   onChange={handleChange}
@@ -329,13 +322,13 @@ function AddProfileDetails() {
                     .then((response) => {
                       console.log("Success", response);
                       enqueueSnackbar("Success");
-                      history.push("/profile");
+                      // history.push("/profile");
                     })
                     .catch((error) => {
                       console.log("Error", error);
                     });
 
-                  localStorage.setItem('prn',values.PRN)
+                  localStorage.setItem("prn", values.PRN);
                 }}
               >
                 Submit

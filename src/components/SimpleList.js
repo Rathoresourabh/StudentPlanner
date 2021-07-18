@@ -45,15 +45,16 @@ export default function SimpleList({ setOpenD }) {
       icon: <AccountCircleIcon />,
     },
     {
-      title: "Statistics",
-      path: "/charts",
-      icon: <AssessmentIcon />,
-    },
-    {
       title: "Results",
       path: "/results",
       icon: <ShowChartIcon />,
     },
+    {
+      title: "Statistics",
+      path: "/statistics",
+      icon: <AssessmentIcon />,
+    },
+    
   ];
   return (
     <div
