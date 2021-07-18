@@ -1,37 +1,37 @@
 import { StyledFirebaseAuth } from "react-firebaseui";
 import firebase from "../utils/firebase";
 import "../assets/css/style.css";
-import Logo from "../assets/images/logo.png"
+import Logo from "../assets/images/logo.png";
 
-export default function Login() {
-  const uiConfig = {
-    signInFlow: "popup",
-    signInSuccessUrl: "/",
-    signInOptions: [
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    ],
+var uiConfig = {
+  signInFlow: "popup",
+  signInSuccessUrl: "/",
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  ],
 
-    callbacks: {
-      signInSuccessWithAuthResult: async (authResult) => {
-        const userInfo = authResult.additionalUserInfo;
-        if (userInfo.isNewUser && userInfo.providerId === "password") {
-          try {
-            await authResult.user.sendEmailVerification();
-            console.log("Check your email.");
-          } catch (e) {
-            console.log(e);
-          }
+  callbacks: {
+    signInSuccessWithAuthResult: async function (authResult) {
+      const userInfo = authResult.additionalUserInfo;
+      if (userInfo.isNewUser && userInfo.providerId === "password") {
+        try {
+          await authResult.currentUser.sendEmailVerification();
+          console.log("Check your email.");
+        } catch (e) {
+          console.log(e);
         }
-        return false;
-      },
+      }
+      return false;
     },
-  };
+  },
+};
 
+function Login() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={Logo}/>
+        <img src={Logo} alt="BVP logo" />
         <h2>Welcome To Student Portal</h2>
         <div>Sign Up / Register</div>
 
@@ -43,3 +43,4 @@ export default function Login() {
     </div>
   );
 }
+export default Login;

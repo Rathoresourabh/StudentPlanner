@@ -16,8 +16,9 @@ const theme = createMuiTheme({
 let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
+
   useEffect(function () {
-    firebase.auth().onAuthStateChanged(function (user) {
+    const authObserver = firebase.auth().onAuthStateChanged(function (user) {
       setUser(user);
       if(user){
         user
@@ -30,6 +31,7 @@ function App() {
         // handle error
 
       });
+      return authObserver
       }
     });
   },);
