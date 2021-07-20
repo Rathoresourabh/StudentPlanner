@@ -129,13 +129,12 @@ app.get("/getUserData/email/:id", async function (req, res) {
 
 //submit form - personal detail.
 app.post("/submit", async function (req, res) {
-  console.log(req.user);
-  console.log(req.body);
   const usersDataByEmail = await Application.find();
   const singleUser = usersDataByEmail.filter((e) => e.email === req.body.email);
+console.log(singleUser);
   if (singleUser) {
-    console.log(singleUser);
-    Application.findByIdAndUpdate(singleUser[0]._id, req.body, (err, res) => {
+    
+   Application.findByIdAndUpdate(singleUser[0]._id, req.body, (err, res) => {
       if (err) throw err;
       console.log("data edited....");
     });

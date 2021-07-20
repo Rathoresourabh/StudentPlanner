@@ -128,6 +128,7 @@ function Results() {
             <button className="proceed_prn" onClick={() => calculateSem()}>
               Proceed
             </button>
+            {semData && semData.length > 0 ? <p className="my-3 text-danger">*Please fill all the details carefully.</p>:""}
             {semData && semData.length > 0 ? (
               semData.map((items, index) => {
                 return (

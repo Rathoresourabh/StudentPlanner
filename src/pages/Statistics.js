@@ -194,7 +194,7 @@ function Charts() {
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style={{maxHeight:'500px',overflow:'scroll'}}>
               <TableContainer>
                 <Table aria-label="simple table">
                   <TableHead style={{ background: "rgb(40, 44, 52)" }}>

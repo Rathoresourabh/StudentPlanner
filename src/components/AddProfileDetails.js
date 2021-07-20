@@ -33,7 +33,7 @@ function AddProfileDetails() {
   };
   const [values, setValues] = useState(empty);
   const [currentPage, setCurrentPage] = useState("one");
-  const [setShowSubmitButton] = useState(false);
+  const [,setShowSubmitButton] = useState(false);
 
   useEffect(() => {
     axios
@@ -42,6 +42,7 @@ function AddProfileDetails() {
         console.log(response);
         if (response.data.length > 0) {
           setValues(response.data[0]);
+          setShowResultButton(true);
         }
       })
       .catch((error) => {
