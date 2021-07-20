@@ -203,7 +203,6 @@ export const SemWiseSubjects = [
         TW_O: "",
         GP: "",
       },
-      
     ],
     SGPA: "",
   },

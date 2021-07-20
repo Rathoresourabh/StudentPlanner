@@ -15,6 +15,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
+/// fields for personal detail CSV
 const fields = [
   "firstName",
   "lastName",
@@ -38,6 +39,24 @@ const fields = [
 ];
 const need = { fields };
 
+/////////SEM FIELDS FOR CSV
+const semFields = [
+  "semName",
+  "subjects",
+  "subjectName",
+  "creditValue",
+  "UE",
+  "IA",
+  "TW_P",
+  "TW_O",
+  "GP",
+  "SGPA",
+];
+
+const sem = { semFields };
+
+//USER detail MODEl
+
 const Application = mongoose.model("Application", {
   firstName: String,
   lastName: String,
@@ -60,6 +79,24 @@ const Application = mongoose.model("Application", {
   PRN: Number,
 });
 
+//schema for user subjects
+const subjectSchema = mongoose.Schema({
+  subjectName: String,
+  creditValue: String,
+  UE: String,
+  IA: String,
+  TW_P: String,
+  TW_O: String,
+  GP: String,
+});
+
+//model for sem details
+const SemMarks = mongoose.model("SemMarks", {
+  semName: String,
+  subjects: [subjectSchema],
+  SGPA: String,
+});
+
 let app = express();
 
 let PORT = process.env.PORT || 5000;
@@ -72,7 +109,7 @@ app.use(expressbearertoken());
 //check our api is working
 
 app.get("/", function (req, res) {
-  // console.log(req.user)
+  console.log(req.user);
   res.send("Working");
 });
 
@@ -96,20 +133,32 @@ app.post("/submit", async function (req, res) {
   const usersDataByEmail = await Application.find();
   const singleUser = usersDataByEmail.filter((e) => e.email === req.body.email);
   if (singleUser) {
-    //yet to be implemented.
-    console.log(singleUser)
+    console.log(singleUser);
     Application.findByIdAndUpdate(singleUser[0]._id, req.body, (err, res) => {
       if (err) throw err;
       console.log("data edited....");
     });
-    res.send(singleUser)
+
+    res.send(singleUser);
   } else {
     let application = new Application(req.body);
     application
       .save()
-      .then((response) => res.send("Submitted"))
-      .catch((error) => res.sendStatus(501));
+      .then((res) => res.send("Submitted"))
+      .catch((error) => res.sendStatus(error));
   }
+});
+
+//semmarks data
+app.post("/submitSemMarks", async function (req, res) {
+  let semDetail = await new SemMarks(req.body);
+  semDetail
+    .save()
+    .then((respond) => {
+      console.log(respond);
+      res.send("submit");
+    })
+    .catch((error) => res.sendStatus(error));
 });
 
 //csv generate - personal details
@@ -125,8 +174,21 @@ app.get("/detail", function (req, res) {
     })
     .catch((error) => res.sendStatus(501));
 });
+app.get("/semMarks", function (req, res) {
+  SemMarks.find()
+    .then((response) => {
+      console.log(response);
+      const csv = parse(response, sem);
+      console.log(csv);
+      res.header("Content-Type", "text/csv");
+      res.attachment("application.csv");
+      return res.send(csv);
+    })
+    .catch((error) => res.sendStatus(501));
+});
 
-//verify user
+//verify user firebase token AUTH
+
 app.use(function (req, res, next) {
   if (req.token) {
     admin
@@ -145,6 +207,9 @@ app.use(function (req, res, next) {
   }
 });
 
+
+
+// PORT number
 app.listen(PORT, function () {
   console.log(`App started at port number ${PORT}`);
 });
