@@ -12,7 +12,7 @@ admin.initializeApp({
 
 mongoose.connect(
   "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance4?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true ,useFindAndModify:false}
 );
 
 /// fields for personal detail CSV
@@ -92,9 +92,10 @@ const subjectSchema = mongoose.Schema({
 
 //model for sem details
 const SemMarks = mongoose.model("SemMarks", {
-  semName: String,
-  subjects: [subjectSchema],
-  SGPA: String,
+  SemWiseSubjects: [
+    { semName: String, subjects: [subjectSchema], SGPA: String },
+  ],
+  email: String,
 });
 
 let app = express();
@@ -156,10 +157,28 @@ app.post("/submitSemMarks", async function (req, res) {
     .save()
     .then((respond) => {
       console.log(respond);
-      res.send("submit");
+      res.send(respond);
     })
     .catch((error) => res.sendStatus(error));
 });
+
+//update sem Marks
+app.post("/updateSemMarks/:id", async function (req, res) {
+  const usersDataByEmail = await SemMarks.find();
+  const singleUser = usersDataByEmail.filter((e) => e.email === req.params.id);
+  SemMarks.findByIdAndUpdate(singleUser[0]._id, req.body, (err, res) => {
+    if (err) throw err;
+  });
+    res.send(singleUser);
+});
+
+//get semMarks by email data
+app.get("/getSemMarks/:id", async function (req, res) {
+  const usersDataByEmail = await SemMarks.find();
+  const singleUser = usersDataByEmail.filter((e) => e.email === req.params.id);
+  res.send(singleUser);
+});
+
 
 //csv generate - personal details
 app.get("/detail", function (req, res) {

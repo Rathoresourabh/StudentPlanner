@@ -33,6 +33,7 @@ export default function ButtonAppBar({ setOpenD }) {
 
   const handleLogout = () => {
     firebase.auth().signOut();
+    localStorage.clear();
   };
   return (
     <div className={classes.root}>

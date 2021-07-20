@@ -1,22 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
-import { useHistory } from "react-router-dom";import Table from "@material-ui/core/Table";
+import { useHistory } from "react-router-dom";
+import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import { Bar,Pie } from "react-chartjs-2";
 import axios from "axios";
 
 function Charts() {
   let { user } = useContext(UserContext);
   const [personal, setPersonal] = useState({});
   const [semData, setSemData] = useState([]);
-  const [modalContent,setModalContent]=useState({})
+  const [modalContent, setModalContent] = useState({});
   let history = useHistory();
 
   useEffect(() => {
-    setSemData(JSON.parse(localStorage.getItem("semData")));
+    axios
+      .get(`http://localhost:5000/getSemMarks/${user.email}`)
+      .then((response) => {
+        setSemData(response.data[0].SemWiseSubjects);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
   }, []);
 
   useEffect(() => {
@@ -43,35 +52,77 @@ function Charts() {
       <div className="row mt-4">
         <div className="col-md-9">
           <div className="row">
-            {semData.map((sem, index) => {
-              return (
-                <div className="col-md-4">
-                  <div
-                    className={
-                      index % 2 === 0
-                        ? index === 2
-                          ? "card p-4 bg-secondary text-white m-2"
-                          : "card p-4 bg-dark text-white m-2"
-                        : "card p-4 bg-info text-white m-2"
-                    }
-                    style={
-                      index % 2 === 0
-                        ? { background: "rgb(40, 44, 52)", cursor: "pointer" }
-                        : { cursor: "pointer" }
-                    }
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                    onClick={() => setModalContent(sem)}
-                  >
-                    <div className="card-title">Semester {sem.semName}</div>
-                    <div className="title-text">SGPA {sem.SGPA}</div>
+            {semData &&
+              semData.map((sem, index) => {
+                return (
+                  <div className="col-md-4">
+                    <div
+                      className={
+                        index % 2 === 0
+                          ? index === 2
+                            ? "card p-4 bg-secondary text-white m-2"
+                            : "card p-4 bg-dark text-white m-2"
+                          : "card p-4 bg-info text-white m-2"
+                      }
+                      style={
+                        index % 2 === 0
+                          ? { background: "rgb(40, 44, 52)", cursor: "pointer" }
+                          : { cursor: "pointer" }
+                      }
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      onClick={() => setModalContent(sem)}
+                    >
+                      <div className="card-title">Semester {sem.semName}</div>
+                      <div className="title-text">SGPA {sem.SGPA}</div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
           <div className="row">
-            <div className="col-md-12"></div>
+            <div className="col-md-12" style={{ maxHeight: "500px" }}>
+              <Bar
+                style={{ height: "100%" }}
+                data={{
+                  labels: semData.map((data) => "Sem " + data.semName),
+                  datasets: [
+                    {
+                      label: "SGPA",
+                      data: semData.map((data) => data.SGPA),
+                      backgroundColor: [
+                        "rgba(255, 99, 132, 0.2)",
+                        "rgba(255, 159, 64, 0.2)",
+                        "rgba(255, 205, 86, 0.2)",
+                        "rgba(75, 192, 192, 0.2)",
+                        "rgba(54, 162, 235, 0.2)",
+                        "rgba(153, 102, 255, 0.2)",
+                        "rgba(201, 203, 207, 0.2)",
+                      ],
+                      borderColor: [
+                        "rgb(255, 99, 132)",
+                        "rgb(255, 159, 64)",
+                        "rgb(255, 205, 86)",
+                        "rgb(75, 192, 192)",
+                        "rgb(54, 162, 235)",
+                        "rgb(153, 102, 255)",
+                        "rgb(201, 203, 207)",
+                      ],
+                      borderWidth: 1,
+                    },
+                  ],
+                }}
+                width={"100px"}
+                height={"100px"}
+                options={{
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                    },
+                  },
+                }}
+              />
+            </div>
           </div>
         </div>
         <div className="col-md-3">
@@ -193,6 +244,54 @@ function Charts() {
                   </TableBody>
                 </Table>
               </TableContainer>
+              <div style={{ margin:20 }}>
+                {modalContent.semName ? (
+                  <Pie
+                    style={{ height: "100%" }}
+                    data={{
+                      labels: modalContent.subjects.map(
+                        (data) => data.subjectName
+                      ),
+                      datasets: [
+                        {
+                          label: "GP",
+                          data: modalContent.subjects.map((data) => data.GP),
+                          backgroundColor: [
+                            "rgba(255, 99, 132, 0.2)",
+                            "rgba(255, 159, 64, 0.2)",
+                            "rgba(255, 205, 86, 0.2)",
+                            "rgba(75, 192, 192, 0.2)",
+                            "rgba(54, 162, 235, 0.2)",
+                            "rgba(153, 102, 255, 0.2)",
+                            "rgba(201, 203, 207, 0.2)",
+                          ],
+                          borderColor: [
+                            "rgb(255, 99, 132)",
+                            "rgb(255, 159, 64)",
+                            "rgb(255, 205, 86)",
+                            "rgb(75, 192, 192)",
+                            "rgb(54, 162, 235)",
+                            "rgb(153, 102, 255)",
+                            "rgb(201, 203, 207)",
+                          ],
+                          borderWidth: 1,
+                        },
+                      ],
+                    }}
+                    width={"100px"}
+                    height={"100px"}
+                    options={{
+                      scales: {
+                        y: {
+                          beginAtZero: true,
+                        },
+                      },
+                    }}
+                  />
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
             {/* <div class="modal-footer">
               <button

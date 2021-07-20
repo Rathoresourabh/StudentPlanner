@@ -31,6 +31,12 @@ export default function BasicTable({ items,passItems }) {
     passItems(updated);
   }
 
+  const changesgpa = (e) => {
+    let updated = { ...semData,SGPA:e.target.value };
+    setSemData(updated);
+    passItems(updated);
+  }
+
 
   return (
     <div className="mt-5">
@@ -63,76 +69,95 @@ export default function BasicTable({ items,passItems }) {
           </TableHead>
           <TableBody>
             {semData.subjects.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell
-                  component="th"
-                  scope="row"
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {item.subjectName}
-                </TableCell>
-                <TableCell align="right">
-                  <input
-                    value={item.creditValue}
-                    name="creditValue"
-                    placeholder="Credit"
-                    onChange={(e) => handleChange(e,item.subjectName)}
-                    required
-                    className="semInput"
-                  />
-                </TableCell>
-                <TableCell align="right">
-                  <input
-                    value={item.UE}
-                    name="UE"
-                    placeholder="UE"
-                    onChange={(e) => handleChange(e,item.subjectName)}
-                    required
-                    className="semInput"
-                  />
-                </TableCell>
-                <TableCell align="right">
-                  <input
-                    value={item.IA}
-                    name="IA"
-                    placeholder="IA"
-                    onChange={(e) => handleChange(e,item.subjectName)}
-                    required
-                    className="semInput"
-                  />
-                </TableCell>
-                <TableCell align="right">
-                  <input
-                    value={item.TW_P}
-                    name="TW_P"
-                    placeholder="TW_P"
-                    onChange={(e) => handleChange(e,item.subjectName)}
-                    required
-                    className="semInput"
-                  />
-                </TableCell>
-                <TableCell align="right">
-                  <input
-                    value={item.TW_O}
-                    name="TW_O"
-                    placeholder="TW_O"
-                    onChange={(e) => handleChange(e,item.subjectName)}
-                    required
-                    className="semInput"
-                  />
-                </TableCell>
-                <TableCell align="right">
-                  <input
-                    value={item.GP}
-                    name="GP"
-                    placeholder="GP"
-                    onChange={(e) => handleChange(e,item.subjectName)}
-                    required
-                    className="semInput"
-                  />
-                </TableCell>
-              </TableRow>
+              <>
+                <TableRow key={index}>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    {item.subjectName}
+                  </TableCell>
+                  <TableCell align="right">
+                    <input
+                      value={item.creditValue}
+                      name="creditValue"
+                      placeholder="Credit"
+                      onChange={(e) => handleChange(e, item.subjectName)}
+                      required
+                      className="semInput"
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <input
+                      value={item.UE}
+                      name="UE"
+                      placeholder="UE"
+                      onChange={(e) => handleChange(e, item.subjectName)}
+                      required
+                      className="semInput"
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <input
+                      value={item.IA}
+                      name="IA"
+                      placeholder="IA"
+                      onChange={(e) => handleChange(e, item.subjectName)}
+                      required
+                      className="semInput"
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <input
+                      value={item.TW_P}
+                      name="TW_P"
+                      placeholder="TW_P"
+                      onChange={(e) => handleChange(e, item.subjectName)}
+                      required
+                      className="semInput"
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <input
+                      value={item.TW_O}
+                      name="TW_O"
+                      placeholder="TW_O"
+                      onChange={(e) => handleChange(e, item.subjectName)}
+                      required
+                      className="semInput"
+                    />
+                  </TableCell>
+                  <TableCell align="right">
+                    <input
+                      value={item.GP}
+                      name="GP"
+                      placeholder="GP"
+                      onChange={(e) => handleChange(e, item.subjectName)}
+                      required
+                      className="semInput"
+                    />
+                  </TableCell>
+                </TableRow>
+              </>
             ))}
+            <TableRow>
+              <TableCell
+                component="th"
+                scope="row"
+                style={{ textTransform: "capitalize" }}
+              >
+                <label>SGPA</label>
+                <input
+                  name="sgpa"
+                  placeholder="SGPA"
+                  value={semData.SGPA}
+                  required
+                  onChange={(e) => changesgpa(e)}
+                  className="semInput"
+                />
+              </TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>

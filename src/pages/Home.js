@@ -3,11 +3,23 @@ import { UserContext } from "../App";
 import SwipeableDrawer from "../components/SwipeableDrawer";
 import topImg from "../assets/images/topimg.jpg";
 import studenImg from "../assets/images/student.svg";
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import axios from 'axios'
 function Home() {
   // const { user } = useAuth();
 
   let { user } = useContext(UserContext);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/getUserData/email/${user.email}`)
+      .then((response) => {
+        localStorage.setItem("prn", response.data[0].PRN);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
+  }, [user.email]);
 
 
 
