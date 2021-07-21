@@ -42,7 +42,6 @@ function AddProfileDetails() {
         console.log(response);
         if (response.data.length > 0) {
           setValues(response.data[0]);
-          setShowResultButton(true);
         }
       })
       .catch((error) => {

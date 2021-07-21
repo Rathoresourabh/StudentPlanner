@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Typography, Button } from "@material-ui/core";
 import { UserContext } from "../App";
 import { Link } from "react-router-dom";
 import ShowProfile from "../components/ShowProfile";

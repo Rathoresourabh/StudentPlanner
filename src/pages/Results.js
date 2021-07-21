@@ -22,7 +22,7 @@ function Results() {
       .then((response) => {
         if (response.data[0].SemWiseSubjects) {
           setSemData(response.data[0].SemWiseSubjects);
-          calculateSem();
+          calculateSem(response.data[0].SemWiseSubjects);
           setDataPresentInApi(true);
         }
       })
@@ -31,7 +31,7 @@ function Results() {
       });
   }, []);
 
-  const calculateSem = () => {
+  const calculateSem = (subjetArr) => {
     if (prn === "" || prn === null) {
       swal({
         title: "",
@@ -50,7 +50,8 @@ function Results() {
       setNumberOfSem(sem_numbers);
 
       let semDataLocal = [];
-      SemWiseSubjects.forEach((sem, index) => {
+      const arrayOfSub = subjetArr || SemWiseSubjects;
+      arrayOfSub.forEach((sem, index) => {
         if (index < sem_numbers) {
           semDataLocal.push(sem);
         }
@@ -102,7 +103,6 @@ function Results() {
 
   const handleSemDataChange = (e) => {
     let localSem = [...semData];
-    console.log(localSem);
     localSem.forEach((sem) => {
       if (sem.semName === e.semName) {
         sem.subjects = e.subjects;
