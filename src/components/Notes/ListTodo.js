@@ -25,8 +25,10 @@ export default function ListTodo({ todos, deleteTodo }) {
             justifyContent: "center",
             alignItems: "center",
             height: "60px",
-            width: "auto",
+        
             marginTop: "30px",
+            marginLeft: "50px",
+            marginRight: "50px"
           }}
         >
           No todos found <SentimentVeryDissatisfiedIcon />

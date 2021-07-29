@@ -293,6 +293,7 @@ function AddProfileDetails() {
                   <input
                     placeholder="Enter Your Roll no."
                     name="RollNo"
+                    type="number"
                     required
                     onChange={handleChange}
                     value={values.RollNo}
@@ -303,6 +304,7 @@ function AddProfileDetails() {
                   <input
                     placeholder="Enter Your PRN"
                     name="PRN"
+                    type="number"
                     required
                     onChange={handleChange}
                     value={values.PRN}

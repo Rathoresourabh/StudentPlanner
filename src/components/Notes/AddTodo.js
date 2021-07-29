@@ -1,8 +1,9 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
-import { Button } from "@material-ui/core";
 import { nanoid } from "nanoid";
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 function AddTodo({ addTodo }) {
   const [content, setContent] = useState("");
@@ -29,7 +30,7 @@ function AddTodo({ addTodo }) {
           width: "100%",
         }}
       >
-        <h1>Add Your Todo ➕</h1>
+        <h1>Add Your Notes ➕ </h1>
         <form onSubmit={handleSubmit}>
           <TextField
             id="standard-basic"
@@ -38,15 +39,9 @@ function AddTodo({ addTodo }) {
             style={{ width: "90vw", maxWidth: "500px" }}
             onChange={(e) => setContent(e.target.value)}
           />
-          <Button
-            type="submit"
-            variant="outlined"
-            color="primary"
-
-            // style={{ display: "none" }}
-          >
-            Add To do
-          </Button>
+          <Fab color="primary" aria-label="add" type="submit" style={{ backgroundColor: "#282c34"}}>
+            <AddIcon />
+          </Fab>
         </form>
       </div>
     </div>
