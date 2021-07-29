@@ -17,6 +17,9 @@ function Results() {
   let { user } = useContext(UserContext);
 
   useEffect(() => {
+    if(!localStorage.getItem('prn')){
+      return history.push('/')
+    }
     axios
       .get(`http://localhost:5000/getSemMarks/${user.email}`)
       .then((response) => {

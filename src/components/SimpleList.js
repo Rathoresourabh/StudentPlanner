@@ -44,11 +44,11 @@ export default function SimpleList({ setOpenD }) {
       path: "/profile",
       icon: <AccountCircleIcon />,
     },
-    {
-      title: "Results",
-      path: "/results",
-      icon: <ShowChartIcon />,
-    },
+    // {
+    //   title: "Results",
+    //   path: "/results",
+    //   icon: <ShowChartIcon />,
+    // },
     {
       title: "Statistics",
       path: "/statistics",

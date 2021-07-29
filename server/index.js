@@ -132,7 +132,7 @@ app.post("/submit", async function (req, res) {
   const usersDataByEmail = await Application.find();
   const singleUser = usersDataByEmail.filter((e) => e.email === req.body.email);
 console.log(singleUser);
-  if (singleUser) {
+  if (singleUser && singleUser.length > 0 && singleUser[0]._id) {
     
    Application.findByIdAndUpdate(singleUser[0]._id, req.body, (err, res) => {
       if (err) throw err;
