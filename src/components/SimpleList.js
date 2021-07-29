@@ -11,6 +11,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import { Avatar } from "@material-ui/core";
 import { useHistory, useLocation } from "react-router";
+import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
 import { UserContext } from "../App";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,11 +45,11 @@ export default function SimpleList({ setOpenD }) {
       path: "/profile",
       icon: <AccountCircleIcon />,
     },
-    // {
-    //   title: "Results",
-    //   path: "/results",
-    //   icon: <ShowChartIcon />,
-    // },
+    {
+      title: "Notes",
+      path: "/addNotes",
+      icon: <SpeakerNotesIcon />,
+    },
     {
       title: "Statistics",
       path: "/statistics",

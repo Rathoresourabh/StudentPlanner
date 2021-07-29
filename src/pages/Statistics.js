@@ -9,6 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { Bar,Pie } from "react-chartjs-2";
 import axios from "axios";
+import SwipeableDrawer  from "../components/SwipeableDrawer";
 
 function Charts() {
   let { user } = useContext(UserContext);
@@ -293,6 +294,7 @@ function Charts() {
                 )}
               </div>
             </div>
+
             {/* <div class="modal-footer">
               <button
                 type="button"
@@ -305,9 +307,12 @@ function Charts() {
                 Save changes
               </button>
             </div> */}
+
+            
           </div>
         </div>
       </div>
+     
     </div>
   );
 }

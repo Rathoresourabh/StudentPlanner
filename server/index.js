@@ -11,7 +11,7 @@ admin.initializeApp({
 });
 
 mongoose.connect(
-  "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance4?retryWrites=true&w=majority",
+  "mongodb+srv://sourabh:okay@cluster0.kmql7.mongodb.net/StudentPerformance5?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true ,useFindAndModify:false}
 );
 
