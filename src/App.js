@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Routes from "./Routes";
 import firebase from "./utils/firebase";
-import './assets/css/App.css'
+import "./assets/css/App.css";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -20,33 +20,29 @@ function App() {
   useEffect(function () {
     const authObserver = firebase.auth().onAuthStateChanged(function (user) {
       setUser(user);
-      if(user){
+      if (user) {
         user
-        .getIdToken(true)
-        .then(function(idToken){
-          axios.defaults.headers["Authorization"] = `Bearer ${idToken}`;
-
-        })
-      .catch(function(error){
-        // handle error
-
-      });
-      return authObserver
+          .getIdToken(true)
+          .then(function (idToken) {
+            axios.defaults.headers["Authorization"] = `Bearer ${idToken}`;
+          })
+          .catch(function (error) {
+            // handle error
+          });
+        return authObserver;
       }
     });
-  },);
-  console.log('user' , user)
+  });
+  console.log("user", user);
 
   return (
-   
-      <ThemeProvider theme={theme}>
-        <UserContext.Provider value={{ user, setUser }}>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
-        </UserContext.Provider>
-      </ThemeProvider>
-   
+    <ThemeProvider theme={theme}>
+      <UserContext.Provider value={{ user, setUser }}>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </UserContext.Provider>
+    </ThemeProvider>
   );
 }
 

@@ -8,10 +8,11 @@ import Divider from "@material-ui/core/Divider";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import HomeIcon from "@material-ui/icons/Home";
-import ShowChartIcon from '@material-ui/icons/ShowChart';
+import ShowChartIcon from "@material-ui/icons/ShowChart";
 import { Avatar } from "@material-ui/core";
+import ImportantDevicesIcon from "@material-ui/icons/ImportantDevices";
 import { useHistory, useLocation } from "react-router";
-import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes';
+import SpeakerNotesIcon from "@material-ui/icons/SpeakerNotes";
 import { UserContext } from "../App";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,17 +46,22 @@ export default function SimpleList({ setOpenD }) {
       path: "/profile",
       icon: <AccountCircleIcon />,
     },
+
+    {
+      title: "Statistics",
+      path: "/statistics",
+      icon: <AssessmentIcon />,
+    },
     {
       title: "Notes",
       path: "/addNotes",
       icon: <SpeakerNotesIcon />,
     },
     {
-      title: "Statistics",
-      path: "/statistics",
-      icon: <AssessmentIcon />,
+      title: "Courses & Recommendation",
+      path: "/suggestion",
+      icon: <ImportantDevicesIcon />,
     },
-    
   ];
   return (
     <div
@@ -94,7 +100,7 @@ export default function SimpleList({ setOpenD }) {
           );
         })}
       </List>
-      <Divider variant="middle" />
+      <Divider variant="middle" light="false" style={{ color: "black" }} />
     </div>
   );
 }

@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import ErrorPage from "./pages/ErrorPage";
 import Results from "./pages/Results";
 import Notes from "./pages/Notes";
+import Course from "./pages/Course";
 function Routes() {
   return (
     <Switch>
@@ -47,6 +48,13 @@ function Routes() {
         <AuthGuard>
           <MainLayout>
             <Notes />
+          </MainLayout>
+        </AuthGuard>
+      </Route>
+      <Route path="/suggestion" exact>
+        <AuthGuard>
+          <MainLayout>
+            <Course />
           </MainLayout>
         </AuthGuard>
       </Route>

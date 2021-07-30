@@ -32,9 +32,9 @@ function Login() {
     <div className="App">
       <header className="App-header">
         <img src={Logo} alt="BVP logo" />
-        <h2>Welcome To Student Portal</h2>
+        <h2>Welcome To Student Management Online Portal</h2>
         <div>Sign Up / Register</div>
-
+        <h5> Kindly Login with your College registered Email </h5>
         <StyledFirebaseAuth
           uiConfig={uiConfig}
           firebaseAuth={firebase.auth()}

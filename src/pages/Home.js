@@ -50,7 +50,8 @@ function Home() {
             </p>
             <h4>
               <span style={{ fontWeight: 900 }}>
-                WELCOME TO ONLINE STUDENT REGISTRATION PORTAL
+                Welcome To Student Management Online Portal
+
               </span>
             </h4>
           </div>

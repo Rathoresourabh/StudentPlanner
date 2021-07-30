@@ -37,7 +37,7 @@ export default function ButtonAppBar({ setOpenD }) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ background: "#282c34" }}>
+      <AppBar position="fixed" style={{ background: "#282c34" }}>
         <Toolbar>
           <IconButton
             edge="start"

@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from "react";
 import AddTodo from "../components/Notes/AddTodo";
-import ListTodo from "../components/Notes/ListTodo"
+import ListTodo from "../components/Notes/ListTodo";
+import SwipeableDrawer from "../components/SwipeableDrawer";
 
 function Notes() {
   const [todos, setTodos] = useState(
@@ -11,7 +11,6 @@ function Notes() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
 
   function addTodo(todo) {
     setTodos([...todos, todo]);
@@ -25,8 +24,11 @@ function Notes() {
   }
   return (
     <div>
-      <AddTodo addTodo = {addTodo} />
-      <ListTodo todos = {todos} deleteTodo = {deleteTodo} />
+      <AddTodo addTodo={addTodo} />
+      <ListTodo todos={todos} deleteTodo={deleteTodo} />
+      <div>
+        <SwipeableDrawer />
+      </div>
     </div>
   );
 }

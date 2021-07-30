@@ -17,18 +17,15 @@ export default function ListTodo({ todos, deleteTodo }) {
     return (
       <div>
         <Alert
-          variant="outlined"
+          variant="filled"
           severity="info"
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            height: "60px",
-        
+            height: "70px",
             marginTop: "30px",
-            marginLeft: "50px",
-            marginRight: "50px"
           }}
         >
           No todos found <SentimentVeryDissatisfiedIcon />
