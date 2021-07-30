@@ -14,6 +14,8 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    margin: "10px",
+    minWidth: "300px"
   },
   media: {
     height: 0,

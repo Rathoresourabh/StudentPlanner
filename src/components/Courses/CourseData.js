@@ -37,13 +37,49 @@ export const CourseData = [
       "A Computer Science portal for geeks. It contains well written, well thought and well explained computer science and programming articles",
   },
   {
-    name: "GeekForGeek DSA Course",
-    label: "GeekForGeek  DSA Course",
-    href: "https://practice.geeksforgeeks.org/courses/dsa-self-paced",
+    name: "JavaScript Interview Questions",
+    label: "JavaScript Interview Questions",
+    href: "https://github.com/sudheerj/javascript-interview-questions",
     image:
-      "https://pbs.twimg.com/profile_images/1304985167476523008/QNHrwL2q.jpg",
+      "https://1.bp.blogspot.com/-pdqcVeIQp64/XDX7TzdRdcI/AAAAAAAAM8E/ZmGuB6caZqIGmEflGHcj3zgXJJrmqRLdgCLcBGAs/w1200-h630-p-k-no-nu/Free%2BCourses%2Bto%2Blearn%2BJavaScript.jpg",
     Description:
-      "A Computer Science portal for geeks. It contains well written, well thought and well explained computer science and programming articles",
+      "List of 1000 JavaScript Interview Questions ",
+  },
+  {
+    name: "Developer Roadmaps",
+    label: "Developer Roadmaps",
+    href: "https://roadmap.sh/",
+    image:
+      "https://content.techgig.com/photo/76527603/4-tips-every-software-engineer-should-follow-in-todays-age.jpg?119058",
+    Description:
+      "Step by step guides and paths to learn different tools or technologies. Follow any Roadmap To crack any good Company.",
+  },
+  {
+    name: "Namaste Javascript",
+    label: "Namaste Javascript",
+    href: "https://www.youtube.com/channel/UC3N9i_KvKZYP4F84FPIzgPQ",
+    image:
+      "https://i.ytimg.com/vi/pN6jk0uUrD8/sddefault.jpg",
+    Description:
+      "Namaste JavaScript is a YouTube playlist by Akshay Saini which is very good to start of and fall in love with JavaScript.",
+  },
+  {
+    name: "Machine Learning bootcamp",
+    label: "Machine Learning bootcamp",
+    href: "https://www.youtube.com/playlist?list=PLyzHIYrZBplo3K0dNUqppd2ynnoZPD6N1",
+    image:
+      "https://yt3.ggpht.com/ytc/AKedOLSeOGDW2GGeV0eIATpJw8_4wb0h5fkdLfrD5RYY=s900-c-k-c0x00ffffff-no-rj",
+    Description:
+      "Machine Learning BootCamp By CodeForCause.",
+  },
+  {
+    name: "Best Resources to Learn Data Structures and Algorithms ",
+    label: "Best Resources to Learn Data Structures and Algorithms",
+    href: "https://www.youtube.com/watch?v=qLiFhSLUM1o",
+    image:
+      "https://static-fastly.hackerearth.com/static/hackerearth/images/marketing/algorithm_blog/algo-og.jpg",
+    Description:
+      "Best Free Resources to start of your career in DSA and CP.",
   },
     
 ];

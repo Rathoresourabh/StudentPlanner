@@ -15,10 +15,12 @@ function CourseSuggestion() {
           paddingLeft: "20px",
           paddingRight: "20px",
           paddingTop: "50px",
+          display: "flex" ,
+          flexWrap: "wrap"
         }}
       >
         {CourseData.map(function (items, index) {
-          return <CourseCard items={items} key={index} />;
+          return <CourseCard items={items} key={index}   />;
         })}
       </div>
     </div>

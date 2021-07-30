@@ -20,12 +20,7 @@ export default function ListTodo({ todos, deleteTodo }) {
           variant="filled"
           severity="info"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "70px",
-            marginTop: "30px",
+            display: "inline-block",
           }}
         >
           No todos found <SentimentVeryDissatisfiedIcon />

@@ -23,11 +23,11 @@ function Notes() {
     setTodos(newTodos);
   }
   return (
-    <div>
+    <div style={{textAlign: 'center',  paddingTop:"20px"}}>
       <AddTodo addTodo={addTodo} />
       <ListTodo todos={todos} deleteTodo={deleteTodo} />
-      <div>
-        <SwipeableDrawer />
+      <div style={{display: "inline-block" , paddingTop: "20px"}}>
+        {/* <SwipeableDrawer /> */}
       </div>
     </div>
   );

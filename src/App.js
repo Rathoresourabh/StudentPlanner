@@ -13,6 +13,8 @@ const theme = createMuiTheme({
   },
 });
 
+// Verifying and storing the user 
+
 let UserContext = React.createContext();
 function App() {
   let [user, setUser] = useState();
